@@ -28,10 +28,6 @@ jobs:
       with:
         swift: ${{ matrix.swift }}
         warnings-as-errors: true
-    - run: |
-        swift test --generate-linuxmain
-        git diff --exit-code
-      if: ${{ matrix.swift == '5.3' }}
   linux:
     runs-on: ubuntu-latest
     strategy:
