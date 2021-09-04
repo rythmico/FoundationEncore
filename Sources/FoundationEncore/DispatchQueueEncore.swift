@@ -1,3 +1,4 @@
+#if !os(Linux)
 // TODO: remove when adopting TCA, use mock schedulers instead wherever needed.
 extension DispatchQueue {
     // Optimized for immediate main thread dispatching.
@@ -9,3 +10,4 @@ extension DispatchQueue {
         }
     }
 }
+#endif

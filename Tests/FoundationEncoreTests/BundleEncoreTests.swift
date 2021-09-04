@@ -1,3 +1,4 @@
+#if !os(Linux)
 import XCTest
 import FoundationEncore
 
@@ -56,3 +57,4 @@ final class BundleStub: BundleProtocol {
         .compacted()
     }
 }
+#endif

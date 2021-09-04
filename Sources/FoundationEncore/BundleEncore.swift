@@ -1,3 +1,4 @@
+#if !os(Linux)
 public let kCFBundleShortVersionKey = "CFBundleShortVersionString" as CFString
 
 public protocol BundleProtocol {
@@ -21,3 +22,4 @@ extension BundleProtocol {
 }
 
 extension Bundle: BundleProtocol {}
+#endif
