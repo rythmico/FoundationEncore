@@ -1,4 +1,4 @@
-extension String {
+extension StringProtocol where Self == String {
     public static var empty: String { "" }
     public static var whitespace: String { " " }
     public static var dash: String { "-" }
