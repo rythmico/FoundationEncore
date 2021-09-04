@@ -89,3 +89,22 @@ extension Collection where Element: StringProtocol {
         joined(separator: .whitespace + .dash + .whitespace)
     }
 }
+
+extension String {
+    public static func random<T: RandomNumberGenerator>(
+        length: UInt = 16,
+        using generator: inout T
+    ) -> String {
+        let chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String(
+            (0..<length).map { _ in
+                chars.randomElement(using: &generator) !! preconditionFailure()
+            }
+        )
+    }
+
+    public static func random(length: UInt = 16) -> String {
+        var generator = SystemRandomNumberGenerator()
+        return .random(length: length, using: &generator)
+    }
+}

@@ -212,4 +212,31 @@ final class StringEncoreTests: XCTestCase {
         XCTAssertEqual(["", "David", "Roman", "",  "Aguirre"].spacedAndDashed(), " - David - Roman -  - Aguirre")
         XCTAssertEqual(["David", "Roman", "Aguirre", "Gonzalez"].spacedAndDashed(), "David - Roman - Aguirre - Gonzalez")
     }
+
+    func testRandom() {
+        let sut = String.random
+        XCTAssertEqual(sut(24).count, 24)
+        XCTAssertEqual(sut(24).count, 24)
+        XCTAssertEqual(sut(24).count, 24)
+        XCTAssertEqual(sut(24).count, 24)
+        XCTAssertNotEqual(sut(24), sut(24))
+        XCTAssertNotEqual(sut(24), sut(24))
+        XCTAssertNotEqual(sut(24), sut(24))
+        XCTAssertNotEqual(sut(24), sut(24))
+
+        struct SeedableRandomNumberGenerator: RandomNumberGenerator {
+            var seed: UInt64
+
+            mutating func next() -> UInt64 {
+                seed = 2862933555777941757 &* seed &+ 3037000493
+                return seed
+            }
+        }
+
+        var rng = SeedableRandomNumberGenerator(seed: 0)
+        XCTAssertEqual(.random(using: &rng), "ax1DqpAeOJ7wkkto")
+        XCTAssertEqual(.random(using: &rng), "yhq4vBPmQvyVXF9h")
+        XCTAssertEqual(.random(using: &rng), "oUbSellYLdr0WOLX")
+        XCTAssertEqual(.random(using: &rng), "5BnEfJ899bHXcGIw")
+    }
 }
