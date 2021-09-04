@@ -7,6 +7,11 @@ on:
       - "**"
   schedule:
     - cron: '3 3 * * 2'  # 3:03 AM, every Tuesday
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   macOS:
     runs-on: ${{ matrix.os }}
