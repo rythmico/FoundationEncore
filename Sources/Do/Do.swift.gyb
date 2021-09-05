@@ -7,24 +7,34 @@ precedencegroup DoPrecedence {
 infix operator => : DoPrecedence
 
 // MARK: - Do (Value Types) -
-
+% for pair in [('', ' ', ' '), ('\n@available(iOS 15, macOS 12, *)', ' async ', ' await ')]:
+% availability = pair[0]
+% async = pair[1]
+% await = pair[2]
+${availability}
 @_disfavoredOverload
 @discardableResult
 @inlinable
-public func => <Subject>(subject: Subject, do: (inout Subject) throws -> Void) rethrows -> Subject {
+public func => <Subject>(subject: Subject, do: (inout Subject)${async}throws -> Void)${async}rethrows -> Subject {
     var copy = subject
-    try `do`(&copy)
+    try${await}`do`(&copy)
     return copy
 }
+% end
 
 // MARK: - Do (Reference Types) -
-
+% for pair in [('', ' ', ' '), ('\n@available(iOS 15, macOS 12, *)', ' async ', ' await ')]:
+% availability = pair[0]
+% async = pair[1]
+% await = pair[2]
+${availability}
 @discardableResult
 @inlinable
-public func => <Subject: AnyObject>(subject: Subject, do: (Subject) throws -> Void) rethrows -> Subject {
-    try `do`(subject)
+public func => <Subject: AnyObject>(subject: Subject, do: (Subject)${async}throws -> Void)${async}rethrows -> Subject {
+    try${await}`do`(subject)
     return subject
 }
+% end
 
 // MARK: - Mutate -
 
