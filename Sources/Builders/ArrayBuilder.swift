@@ -13,7 +13,9 @@ public struct ArrayBuilder<Element> {
 }
 
 extension Array {
-    public init(@ArrayBuilder<Element> build: () -> Self) {
+    public typealias Builder = ArrayBuilder<Element>
+
+    public init(@Builder build: () -> Self) {
         self = build()
     }
 }

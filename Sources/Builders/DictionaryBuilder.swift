@@ -14,7 +14,9 @@ public struct DictionaryBuilder<Key: Hashable, Value> {
 }
 
 extension Dictionary {
-    public init(@DictionaryBuilder<Key, Value> build: () -> Dictionary) {
+    public typealias Builder = DictionaryBuilder<Key, Value>
+
+    public init(@Builder build: () -> Dictionary) {
         self = build()
     }
 }
