@@ -69,6 +69,12 @@ extension Date {
 }
 
 extension Date {
+    #if os(Linux)
+    public static var now: Date {
+        Date()
+    }
+    #endif
+
     public static var referenceDate: Date {
         Date(timeIntervalSinceReferenceDate: .zero)
     }
