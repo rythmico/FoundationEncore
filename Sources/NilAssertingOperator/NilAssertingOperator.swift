@@ -6,24 +6,16 @@ precedencegroup NilAssertingPrecedence {
 infix operator !! : NilAssertingPrecedence
 infix operator ?! : NilAssertingPrecedence
 
-public func !! <T>(optional: T?, exitClosure: @autoclosure () -> Never) -> T {
+public func !! <T>(optional: T?, exit: @autoclosure () -> Never) -> T {
     guard let value = optional else {
-        exitClosure()
+        exit()
     }
     return value
 }
 
-public func !! <T>(optional: T?, errorClosure: @autoclosure () -> Error) throws -> T {
+public func ?! <T>(optional: T?, error: @autoclosure () -> Error) throws -> T {
     guard let value = optional else {
-        throw errorClosure()
-    }
-    return value
-}
-
-public func ?! <T>(optional: T?, actionClosure: @autoclosure () -> Void) -> T? {
-    guard let value = optional else {
-        actionClosure()
-        return optional
+        throw error()
     }
     return value
 }

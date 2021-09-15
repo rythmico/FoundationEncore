@@ -26,12 +26,12 @@ extension URL {
             $0.path = path
             $0.queryItems = queryItems
         }
-        let url = try urlComponents.url !! Error.invalidURLComponents(urlComponents)
+        let url = try urlComponents.url ?! Error.invalidURLComponents(urlComponents)
         self = doubleSlash ? url : try url.removingSchemeDoubleSlash()
     }
 
     private func removingSchemeDoubleSlash() throws -> URL {
-        try URL(string: absoluteString.replacingOccurrences(of: "://", with: ":")) !! Error.schemeDoubleSlashRemovalFailed(self)
+        try URL(string: absoluteString.replacingOccurrences(of: "://", with: ":")) ?! Error.schemeDoubleSlashRemovalFailed(self)
     }
 }
 
