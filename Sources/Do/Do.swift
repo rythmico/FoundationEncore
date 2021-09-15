@@ -17,7 +17,8 @@ public func => <Subject>(subject: Subject, do: (inout Subject) throws -> Void) r
     return copy
 }
 
-@available(iOS 15, macOS 12, *)
+#if compiler(>=5.5)
+@available(macOS 12, iOS 15, watchOS 8, tvOS 15, *)
 @_disfavoredOverload
 @discardableResult
 @inlinable
@@ -26,6 +27,7 @@ public func => <Subject>(subject: Subject, do: (inout Subject) async throws -> V
     try await `do`(&copy)
     return copy
 }
+#endif
 
 // MARK: - Do (Reference Types) -
 
@@ -36,13 +38,15 @@ public func => <Subject: AnyObject>(subject: Subject, do: (Subject) throws -> Vo
     return subject
 }
 
-@available(iOS 15, macOS 12, *)
+#if compiler(>=5.5)
+@available(macOS 12, iOS 15, watchOS 8, tvOS 15, *)
 @discardableResult
 @inlinable
 public func => <Subject: AnyObject>(subject: Subject, do: (Subject) async throws -> Void) async rethrows -> Subject {
     try await `do`(subject)
     return subject
 }
+#endif
 
 // MARK: - Mutate -
 
