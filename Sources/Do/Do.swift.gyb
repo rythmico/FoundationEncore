@@ -7,24 +7,36 @@ precedencegroup DoPrecedence {
 infix operator => : DoPrecedence
 
 // MARK: - Do (Value Types) -
-
+% for is_async in [False, True]:
+% checks_start = "\n".join(["", "#if compiler(>=5.5)", "@available(macOS 12, iOS 15, watchOS 8, tvOS 15, *)"]) if is_async else ""
+% async = " async " if is_async else " "
+% await = " await " if is_async else " "
+% checks_end = "\n".join(["}", "#endif"]) if is_async else "}"
+${checks_start}
 @_disfavoredOverload
 @discardableResult
 @inlinable
-public func => <Subject>(subject: Subject, do: (inout Subject) throws -> Void) rethrows -> Subject {
+public func => <Subject>(subject: Subject, do: (inout Subject)${async}throws -> Void)${async}rethrows -> Subject {
     var copy = subject
-    try `do`(&copy)
+    try${await}`do`(&copy)
     return copy
-}
+${checks_end}
+% end
 
 // MARK: - Do (Reference Types) -
-
+% for is_async in [False, True]:
+% checks_start = "\n".join(["", "#if compiler(>=5.5)", "@available(macOS 12, iOS 15, watchOS 8, tvOS 15, *)"]) if is_async else ""
+% async = " async " if is_async else " "
+% await = " await " if is_async else " "
+% checks_end = "\n".join(["}", "#endif"]) if is_async else "}"
+${checks_start}
 @discardableResult
 @inlinable
-public func => <Subject: AnyObject>(subject: Subject, do: (Subject) throws -> Void) rethrows -> Subject {
-    try `do`(subject)
+public func => <Subject: AnyObject>(subject: Subject, do: (Subject)${async}throws -> Void)${async}rethrows -> Subject {
+    try${await}`do`(subject)
     return subject
-}
+${checks_end}
+% end
 
 // MARK: - Mutate -
 
