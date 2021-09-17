@@ -15,7 +15,7 @@ let package = Package(
         .library(name: "Builders", targets: ["Builders"]),
         .library(name: "Do", targets: ["Do"]),
         .library(name: "EnumTag", targets: ["EnumTag"]),
-        .library(name: "NilAssertingOperator", targets: ["NilAssertingOperator"]),
+        .library(name: "NilGuardingOperator", targets: ["NilGuardingOperator"]),
         .library(name: "OptionalProtocol", targets: ["OptionalProtocol"]),
         .library(name: "ResultProtocol", targets: ["ResultProtocol"]),
         .library(name: "UnwrapTuple", targets: ["UnwrapTuple"]),
@@ -29,7 +29,7 @@ let package = Package(
             .target(name: "EnumTag"),
             .product(name: "ISO8601PeriodDuration", package: "ISO8601PeriodDuration"),
             .product(name: "LegibleError", package: "LegibleError"),
-            .target(name: "NilAssertingOperator"),
+            .target(name: "NilGuardingOperator"),
             .product(name: "NonEmpty", package: "swift-nonempty"),
             .target(name: "OptionalProtocol"),
             .product(name: "PreciseDecimal", package: "PreciseDecimal"),
@@ -51,7 +51,7 @@ let package = Package(
 
         .target(name: "EnumTag"),
 
-        .target(name: "NilAssertingOperator"),
+        .target(name: "NilGuardingOperator"),
 
         .target(name: "OptionalProtocol"),
 

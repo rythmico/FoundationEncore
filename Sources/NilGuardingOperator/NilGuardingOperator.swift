@@ -1,10 +1,5 @@
-precedencegroup NilAssertingPrecedence {
-    associativity: left
-    higherThan: NilCoalescingPrecedence
-}
-
-infix operator !! : NilAssertingPrecedence
-infix operator ?! : NilAssertingPrecedence
+infix operator !! : NilCoalescingPrecedence
+infix operator ?! : NilCoalescingPrecedence
 
 public func !! <T>(optional: T?, exit: @autoclosure () -> Never) -> T {
     guard let value = optional else {
