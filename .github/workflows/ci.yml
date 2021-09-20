@@ -14,12 +14,23 @@ concurrency:
 
 jobs:
   macOS:
+    name: ${{ matrix.platform }}
     runs-on: macos-11
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+          - macOS
+          # Uncomment when Xcode 13 is stable
+          # - iOS
     steps:
     - uses: actions/checkout@v2
+    - run: sudo xcode-select --switch /Applications/Xcode_13.0_beta.app # Remove when Xcode 13 supports macOS 12 SDK
     - uses: mxcl/xcodebuild@v1
       with:
-        swift: ~5.5
+        # Uncomment when Xcode 13 supports macOS 12 SDK
+        # swift: ~5.5
+        platform: ${{ matrix.platform }}
         warnings-as-errors: true
   linux:
     runs-on: ubuntu-latest
