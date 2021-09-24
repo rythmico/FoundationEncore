@@ -5,11 +5,11 @@
 @_exported import Builders
 @_exported import Do
 @_exported import EnumTag
-@_exported import ISO8601PeriodDuration
 @_exported import LegibleError
 @_exported import NilGuardingOperator
 @_exported import NonEmpty
 @_exported import OptionalProtocol
+@_exported import PeriodDuration
 @_exported import PreciseDecimal
 @_exported import ResultProtocol
 @_exported import Tagged
