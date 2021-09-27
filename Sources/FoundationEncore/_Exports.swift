@@ -8,7 +8,6 @@
 @_exported import LegibleError
 @_exported import NilGuardingOperator
 @_exported import NonEmpty
-@_exported import OptionalProtocol
 @_exported import PeriodDuration
 @_exported import PreciseDecimal
 @_exported import ResultProtocol

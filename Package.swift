@@ -16,7 +16,6 @@ let package = Package(
         .library(name: "Do", targets: ["Do"]),
         .library(name: "EnumTag", targets: ["EnumTag"]),
         .library(name: "NilGuardingOperator", targets: ["NilGuardingOperator"]),
-        .library(name: "OptionalProtocol", targets: ["OptionalProtocol"]),
         .library(name: "ResultProtocol", targets: ["ResultProtocol"]),
         .library(name: "UnwrapTuple", targets: ["UnwrapTuple"]),
     ],
@@ -30,7 +29,6 @@ let package = Package(
             .product(name: "LegibleError", package: "LegibleError"),
             .target(name: "NilGuardingOperator"),
             .product(name: "NonEmpty", package: "swift-nonempty"),
-            .target(name: "OptionalProtocol"),
             .product(name: "PeriodDuration", package: "PeriodDuration"),
             .product(name: "PreciseDecimal", package: "PreciseDecimal"),
             .target(name: "ResultProtocol"),
@@ -52,8 +50,6 @@ let package = Package(
         .target(name: "EnumTag"),
 
         .target(name: "NilGuardingOperator"),
-
-        .target(name: "OptionalProtocol"),
 
         .target(name: "ResultProtocol"),
 
