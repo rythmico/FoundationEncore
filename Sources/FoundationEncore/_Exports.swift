@@ -10,7 +10,6 @@
 @_exported import NonEmpty
 @_exported import PeriodDuration
 @_exported import PreciseDecimal
-@_exported import ResultProtocol
 @_exported import Tagged
 @_exported import UnwrapTuple
 @_exported import Version
