@@ -22,4 +22,8 @@ extension BundleProtocol {
 }
 
 extension Bundle: BundleProtocol {}
+
+extension BundleProtocol where Self == Bundle {
+    public static var main: Self { .main }
+}
 #endif
