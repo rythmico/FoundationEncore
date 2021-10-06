@@ -2,11 +2,17 @@ public protocol RawRepresentableWithUnknown: RawRepresentable {
     static var unknown: Self { get }
 }
 
+extension RawRepresentableWithUnknown {
+    public init(rawValueOrUnknown rawValue: RawValue) {
+        self = Self(rawValue: rawValue) ?? .unknown
+    }
+}
+
 extension RawRepresentableWithUnknown where Self: Decodable, RawValue: Decodable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         let rawValue = try container.decode(RawValue.self)
-        self = Self(rawValue: rawValue) ?? .unknown
+        self.init(rawValueOrUnknown: rawValue)
     }
 }
 
