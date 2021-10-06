@@ -30,6 +30,7 @@ let package = Package(
             .product(name: "NonEmpty", package: "swift-nonempty"),
             .product(name: "PeriodDuration", package: "PeriodDuration"),
             .product(name: "PreciseDecimal", package: "PreciseDecimal"),
+            .target(name: "RawRepresentableWithUnknown"),
             .product(name: "Tagged", package: "swift-tagged"),
             .target(name: "UnwrapTuple"),
             .product(name: "Version", package: "Version"),
@@ -49,6 +50,9 @@ let package = Package(
 
         .target(name: "NilGuardingOperator"),
 
+        .target(name: "RawRepresentableWithUnknown"),
+        .testTarget(name: "RawRepresentableWithUnknownTests", dependencies: ["RawRepresentableWithUnknown", "XCTJSONKit"]),
+
         .target(name: "UnwrapTuple", exclude: ["UnwrapTuple.swift.gyb"]),
     ]
 )
@@ -61,4 +65,5 @@ package.dependencies = [
     .package(name: "swift-nonempty", url: "https://github.com/pointfreeco/swift-nonempty", from: "0.3.1"),
     .package(name: "swift-tagged", url: "https://github.com/pointfreeco/swift-tagged", from: "0.6.0"),
     .package(name: "Version", url: "https://github.com/mxcl/Version", from: "2.0.1"),
+    .package(name: "XCTJSONKit", url: "https://github.com/davdroman/XCTJSONKit", .branch("main")),
 ]
