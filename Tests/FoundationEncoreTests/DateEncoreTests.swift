@@ -42,6 +42,6 @@ final class DateEncoreTests: XCTestCase {
 
 private extension DateEncoreTests {
     func assert(_ date: Date, _ string: String, file: StaticString = #filePath, line: UInt = #line) {
-        XCTAssertEqual(ISO8601DateFormatter.neutral.string(from: date), string, file: file, line: line)
+        XCTAssertEqual(ISO8601DateFormatter().string(from: date), string, file: file, line: line)
     }
 }

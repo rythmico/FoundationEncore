@@ -83,7 +83,7 @@ extension Date {
 #if DEBUG
 extension Date: ExpressibleByStringLiteral {
     public init(stringLiteral value: StringLiteralType) {
-        self = ISO8601DateFormatter.neutral.date(from: value) !! preconditionFailure(
+        self = ISO8601DateFormatter().date(from: value) !! preconditionFailure(
             "Could not parse string literal '\(value)' into ISO 8601 date"
         )
     }
