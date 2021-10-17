@@ -3,45 +3,89 @@ import FoundationEncore
 
 final class DateEncoreTests: XCTestCase {
     func testReferenceDate() {
-        assert(.referenceDate, "2001-01-01T00:00:00Z")
+        XCTAssertEqual(Date.referenceDate, "2001-01-01T00:00:00Z")
     }
+
+    let sut: Date = "2021-10-24T17:07:00Z"
+    let tz = TimeZone(identifier: "Europe/London")!
 
     func testSet() {
-        assert(.referenceDate => ([], 0), "2001-01-01T00:00:00Z")
-        assert(.referenceDate => (.day, 5), "2001-01-05T00:00:00Z")
-        assert(.referenceDate => (.hour, 1), "2001-01-01T01:00:00Z")
-        assert(.referenceDate => ([.hour, .minute, .second], 1), "2001-01-01T01:01:01Z")
-        assert(.referenceDate => (.day, 5) => ([.hour, .minute, .second], 1), "2001-01-05T01:01:01Z")
-        assert(.referenceDate => ([.hour, .minute, .second], 5) => (.day, 5), "2001-01-05T05:05:05Z")
+        // BST to BST (DST)
+        XCTAssertEqual(sut => ([], 0, tz), "2021-10-24T17:07:00Z")
+        XCTAssertEqual(sut => (.day, 5, tz), "2021-10-05T17:07:00Z")
+        XCTAssertEqual(sut => (.hour, 1, tz), "2021-10-24T00:07:00Z")
+        XCTAssertEqual(sut => ([.hour, .minute, .second], 1, tz), "2021-10-24T00:01:01Z")
+        XCTAssertEqual(sut => (.day, 5, tz) => ([.hour, .minute, .second], 1, tz), "2021-10-05T00:01:01Z")
+        XCTAssertEqual(sut => ([.hour, .minute, .second], 5, tz) => (.day, 5, tz), "2021-10-05T04:05:05Z")
+        // BST to GMT (DST)
+        XCTAssertEqual(sut => (.day, 31, tz), "2021-10-31T18:07:00Z")
+        XCTAssertEqual(sut => (.day, 31, tz) => ([], 0, tz), "2021-10-31T18:07:00Z")
+        XCTAssertEqual(sut => (.day, 31, tz) => (.hour, 1, tz) => (.minute, 59, tz), "2021-10-31T00:59:00Z")
+        XCTAssertEqual(sut => (.day, 31, tz) => (.hour, 2, tz) => (.minute, 0, tz), "2021-10-31T02:00:00Z")
+        XCTAssertEqual(sut => (.day, 31, tz) => (.hour, 17, tz), "2021-10-31T17:07:00Z")
+        // TODO: test GMT to BST (DST)
     }
 
-    func testSetWithTimeZone() {
-        let timeZone = TimeZone(abbreviation: "BST")!
-        let date: Date = "2021-08-26T03:25:50Z"
-        assert(date => ([], 0, timeZone), "2021-08-26T03:25:50Z")
-        assert(date => (.day, 5, timeZone), "2021-08-05T03:25:50Z")
-        assert(date => (.hour, 1, timeZone), "2021-08-26T00:25:50Z")
-        assert(date => ([.hour, .minute, .second], 1, timeZone), "2021-08-26T00:01:01Z")
-        assert(date => (.day, 5, timeZone) => ([.hour, .minute, .second], 1, timeZone), "2021-08-05T00:01:01Z")
-        assert(date => ([.hour, .minute, .second], 5, timeZone) => (.day, 5, timeZone), "2021-08-05T04:05:05Z")
+    func testAdd() {
+        // BST to BST (DST)
+        XCTAssertEqual(sut + (1, .day, tz), "2021-10-25T17:07:00Z")
+        XCTAssertEqual(sut + (1, .year, tz), "2022-10-24T17:07:00Z")
+        XCTAssertEqual(sut + (3, .year, tz), "2024-10-24T17:07:00Z")
+        // BST to GMT (DST)
+        XCTAssertEqual(sut + (1, .weekOfYear, tz), "2021-10-31T18:07:00Z")
+        XCTAssertEqual(sut + (2, .weekOfYear, tz), "2021-11-07T18:07:00Z")
+        XCTAssertEqual(sut + (1, .month, tz), "2021-11-24T18:07:00Z")
     }
 
-    func testSum() {
-        assert(.referenceDate + (3, .year), "2004-01-01T00:00:00Z")
-        assert(.referenceDate + (3, .year) + (50, .day), "2004-02-20T00:00:00Z")
-        assert(.referenceDate - (3, .year) - (3, .day), "1997-12-29T00:00:00Z")
-        assert(.referenceDate - (3, .year) - (3, .day) + (5, .hour), "1997-12-29T05:00:00Z")
+    func testSubstract() {
+        // BST to BST (DST)
+        XCTAssertEqual(sut, "2021-10-25T17:07:00Z" - (1, .day, tz))
+        XCTAssertEqual(sut, "2022-10-24T17:07:00Z" - (1, .year, tz))
+        XCTAssertEqual(sut, "2024-10-24T17:07:00Z" - (3, .year, tz))
+        // GMT to BST (DST)
+        XCTAssertEqual(sut, "2021-10-31T18:07:00Z" - (1, .weekOfYear, tz))
+        XCTAssertEqual(sut, "2021-11-07T18:07:00Z" - (2, .weekOfYear, tz))
+        XCTAssertEqual(sut, "2021-11-24T18:07:00Z" - (1, .month, tz))
     }
 
-    func testInitDateTime() {
-        let date: Date = "2021-07-03T19:32:13Z"
-        let time: Date = "2005-02-28T17:25:30Z"
-        assert(Date(date: date, time: time), "2021-07-03T17:25:30Z")
+    func testDiff() {
+        // BST-BST (DST)
+        XCTAssertEqual(sut - ("2021-10-24T17:07:00Z", .second, tz), 0)
+        XCTAssertEqual(sut - ("2021-10-24T17:07:00Z", .day, tz), 0)
+        XCTAssertEqual(sut - ("2021-10-21T17:07:00Z", .day, tz), 3)
+        XCTAssertEqual(sut - ("2011-10-24T17:07:00Z", .year, tz), 10)
+        XCTAssertEqual(sut - ("2011-10-24T17:07:00Z", .month, tz), 120)
+        XCTAssertEqual(sut - ("2021-10-30T17:07:00Z", .hour, tz), -144)
+        // BST-GMT (DST)
+        XCTAssertEqual("2021-10-31T03:00:00Z" - ("2021-10-31T00:00:00Z", .hour, tz), 3)
+        XCTAssertEqual("2021-10-31T02:00:00Z" - ("2021-10-31T00:00:00Z", .hour, tz), 2)
+        XCTAssertEqual("2021-10-31T01:00:00Z" - ("2021-10-31T00:00:00Z", .hour, tz), 1)
     }
-}
 
-private extension DateEncoreTests {
-    func assert(_ date: Date, _ string: String, file: StaticString = #filePath, line: UInt = #line) {
-        XCTAssertEqual(ISO8601DateFormatter.neutral.string(from: date), string, file: file, line: line)
+    func testMerge() {
+        XCTAssertEqual(
+            Date(
+                date: "2021-10-24T03:00:00Z", // BST
+                time: "2021-10-24T18:07:00Z", // BST
+                timeZone: tz
+            ),
+            "2021-10-24T18:07:00Z"
+        )
+        XCTAssertEqual(
+            Date(
+                date: "2021-10-31T03:00:00Z", // GMT
+                time: "2021-10-24T17:07:00Z", // BST
+                timeZone: tz
+            ),
+            "2021-10-31T18:07:00Z"
+        )
+        XCTAssertEqual(
+            Date(
+                date: "2021-10-31T03:00:00Z", // GMT
+                time: "2021-10-31T18:07:00Z", // GMT
+                timeZone: tz
+            ),
+            "2021-10-31T18:07:00Z"
+        )
     }
 }
