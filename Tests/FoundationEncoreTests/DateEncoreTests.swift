@@ -81,6 +81,14 @@ final class DateEncoreTests: XCTestCase {
         )
         XCTAssertEqual(
             Date(
+                date: "2021-10-24T03:00:00Z", // BST
+                time: "2021-10-31T18:07:00Z", // GMT
+                timeZone: tz
+            ),
+            "2021-10-24T17:07:00Z"
+        )
+        XCTAssertEqual(
+            Date(
                 date: "2021-10-31T03:00:00Z", // GMT
                 time: "2021-10-31T18:07:00Z", // GMT
                 timeZone: tz
