@@ -13,6 +13,7 @@ let package = Package(
         .library(name: "FoundationEncore", targets: ["FoundationEncore"]),
         .library(name: "AnyEquatable", targets: ["AnyEquatable"]),
         .library(name: "Builders", targets: ["Builders"]),
+        .library(name: "DateTimeOnly", targets: ["DateTimeOnly"]),
         .library(name: "Do", targets: ["Do"]),
         .library(name: "EnumTag", targets: ["EnumTag"]),
         .library(name: "NilGuardingOperator", targets: ["NilGuardingOperator"]),
@@ -23,6 +24,7 @@ let package = Package(
             .product(name: "Algorithms", package: "swift-algorithms"),
             .target(name: "AnyEquatable"),
             .target(name: "Builders"),
+            .target(name: "DateTimeOnly"),
             .target(name: "Do"),
             .target(name: "EnumTag"),
             .product(name: "LegibleError", package: "LegibleError"),
@@ -42,6 +44,9 @@ let package = Package(
 
         .target(name: "Builders"),
         .testTarget(name: "BuildersTests", dependencies: ["Builders"]),
+
+        .target(name: "DateTimeOnly"),
+        .testTarget(name: "DateTimeOnlyTests", dependencies: ["DateTimeOnly", "XCTJSONKit"]),
 
         .target(name: "Do", exclude: ["Do.swift.gyb"]),
         .testTarget(name: "DoTests", dependencies: ["Do"]),
