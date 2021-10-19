@@ -33,8 +33,10 @@ extension Date {
     }
 
     private static func calendar(for timeZone: TimeZone) -> Calendar {
-        Calendar.neutral => (\.timeZone, timeZone)
+        baseCalendar => (\.timeZone, timeZone)
     }
+
+    private static let baseCalendar = Calendar.neutral
 }
 
 extension Date {
