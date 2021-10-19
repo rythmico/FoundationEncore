@@ -16,7 +16,7 @@ let package = Package(
         .library(name: "DateTimeOnly", targets: ["DateTimeOnly"]),
         .library(name: "Do", targets: ["Do"]),
         .library(name: "EnumTag", targets: ["EnumTag"]),
-        .library(name: "NilGuardingOperator", targets: ["NilGuardingOperator"]),
+        .library(name: "NilGuardingOperators", targets: ["NilGuardingOperators"]),
         .library(name: "UnwrapTuple", targets: ["UnwrapTuple"]),
     ],
     targets: [
@@ -28,7 +28,7 @@ let package = Package(
             .target(name: "Do"),
             .target(name: "EnumTag"),
             .product(name: "LegibleError", package: "LegibleError"),
-            .target(name: "NilGuardingOperator"),
+            .target(name: "NilGuardingOperators"),
             .product(name: "NonEmpty", package: "swift-nonempty"),
             .product(name: "PeriodDuration", package: "PeriodDuration"),
             .product(name: "PreciseDecimal", package: "PreciseDecimal"),
@@ -53,9 +53,9 @@ let package = Package(
 
         .target(name: "EnumTag"),
 
-        .target(name: "NilGuardingOperator"),
-        .testTarget(name: "NilGuardingOperatorTests", dependencies: [
-            "NilGuardingOperator",
+        .target(name: "NilGuardingOperators"),
+        .testTarget(name: "NilGuardingOperatorsTests", dependencies: [
+            "NilGuardingOperators",
             .product(name: "CwlPreconditionTesting", package: "CwlPreconditionTesting", condition: .when(platforms: [.macOS, .iOS])),
         ]),
 

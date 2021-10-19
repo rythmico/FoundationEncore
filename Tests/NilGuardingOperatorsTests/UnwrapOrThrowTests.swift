@@ -1,6 +1,6 @@
 #if os(macOS) || os(iOS)
 import CwlPreconditionTesting
-import NilGuardingOperator
+import NilGuardingOperators
 import XCTest
 
 final class UnwrapOrThrowTests: XCTestCase {

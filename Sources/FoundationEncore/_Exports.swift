@@ -7,7 +7,7 @@
 @_exported import Do
 @_exported import EnumTag
 @_exported import LegibleError
-@_exported import NilGuardingOperator
+@_exported import NilGuardingOperators
 @_exported import NonEmpty
 @_exported import PeriodDuration
 @_exported import PreciseDecimal
