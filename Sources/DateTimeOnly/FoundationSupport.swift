@@ -2,8 +2,7 @@ import Foundation
 
 extension Date {
     public init(date: DateOnly, time: TimeOnly, timeZone: TimeZone) {
-        var calendar = Calendar(identifier: .gregorian)
-        calendar.locale = locale
+        var calendar = calendar
         calendar.timeZone = timeZone
         let dateComponents = DateComponents(
             calendar: calendar,
