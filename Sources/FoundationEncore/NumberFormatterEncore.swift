@@ -13,6 +13,8 @@ extension NumberFormatter {
 
 extension NumberFormatter {
     public func string(from decimal: Decimal) -> String {
-        string(from: decimal as NSDecimalNumber) !! preconditionFailure("Failed to format Decimal '\(decimal)'")
+        string(from: decimal as NSDecimalNumber) !! {
+            preconditionFailure("Failed to format Decimal '\(decimal)'")
+        }
     }
 }

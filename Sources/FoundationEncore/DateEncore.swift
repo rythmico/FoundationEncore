@@ -80,7 +80,7 @@ extension Date {
     public static func + (lhs: Date, rhs: (amount: Int, unit: Calendar.Component, timeZone: TimeZone)) throws -> Date {
         try Self.calendar(for: rhs.timeZone).date(byAdding: rhs.unit, value: rhs.amount, to: lhs) ?! {
             DateOperationError.cannotAdd(lhs, amount: rhs.amount, unit: rhs.unit, rhs.timeZone)
-        }()
+        }
     }
 
     public static func - (lhs: Date, rhs: (amount: Int, unit: Calendar.Component, timeZone: TimeZone)) throws -> Date {
@@ -90,7 +90,7 @@ extension Date {
     public static func - (lhs: Date, rhs: (date: Date, unit: Calendar.Component, timeZone: TimeZone)) throws -> Int {
         try Self.calendar(for: rhs.timeZone).dateComponents([rhs.unit], from: rhs.date, to: lhs).value(for: rhs.unit) ?! {
             DateOperationError.cannotDiff(minuend: lhs, subtrahend: rhs.date, unit: rhs.unit, rhs.timeZone)
-        }()
+        }
     }
 }
 
@@ -98,9 +98,9 @@ extension Date {
     public init(date: Date, time: Date, timeZone: TimeZone) {
         let calendar = Self.calendar(for: timeZone)
         let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: time)
-        self = (try? date.setting(timeComponents, for: timeZone)) !! preconditionFailure(
-            "Date merging failed with 'date' \(date) 'time' \(time)"
-        )
+        self = (try? date.setting(timeComponents, for: timeZone)) !! {
+            preconditionFailure("Date merging failed with 'date' \(date) 'time' \(time)")
+        }
     }
 }
 
@@ -116,9 +116,9 @@ extension DateComponents {
 #if DEBUG
 extension Date: ExpressibleByStringLiteral {
     public init(stringLiteral value: StringLiteralType) {
-        self = ISO8601DateFormatter().date(from: value) !! preconditionFailure(
-            "Could not parse string literal '\(value)' into ISO 8601 date"
-        )
+        self = ISO8601DateFormatter().date(from: value) !! {
+            preconditionFailure("Could not parse string literal '\(value)' into ISO 8601 date")
+        }
     }
 }
 #endif

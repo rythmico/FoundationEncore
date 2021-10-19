@@ -12,8 +12,8 @@ extension UUID {
     }
 
     private init(uuidInt int: Int) {
-        self = UUID(uuidString: "00000000-0000-0000-0000-\(String(format: "%012x", int))") !! preconditionFailure(
-            "Failed to create UUID with integer \(int)"
-        )
+        self = UUID(uuidString: "00000000-0000-0000-0000-\(String(format: "%012x", int))") !! {
+            preconditionFailure("Failed to create UUID with integer \(int)")
+        }
     }
 }
