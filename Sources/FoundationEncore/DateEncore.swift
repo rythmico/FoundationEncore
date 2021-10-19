@@ -1,9 +1,12 @@
-extension DateComponents {
-    public func optionalValue(for unit: Calendar.Component) -> Int? {
-        guard let value = value(for: unit), value != NSNotFound else {
-            return nil
-        }
-        return value
+extension Date {
+    #if os(Linux)
+    public static var now: Date {
+        Date()
+    }
+    #endif
+
+    public static var referenceDate: Date {
+        Date(timeIntervalSinceReferenceDate: .zero)
     }
 }
 
@@ -101,15 +104,12 @@ extension Date {
     }
 }
 
-extension Date {
-    #if os(Linux)
-    public static var now: Date {
-        Date()
-    }
-    #endif
-
-    public static var referenceDate: Date {
-        Date(timeIntervalSinceReferenceDate: .zero)
+extension DateComponents {
+    public func optionalValue(for unit: Calendar.Component) -> Int? {
+        guard let value = value(for: unit), value != NSNotFound else {
+            return nil
+        }
+        return value
     }
 }
 
