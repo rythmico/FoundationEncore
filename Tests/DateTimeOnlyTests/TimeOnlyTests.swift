@@ -31,14 +31,14 @@ final class TimeOnlyTests: XCTestCase {
 
     func testComparable() {
         let sut = [
-            TimeOnly(hour: 20, minute: 10),
-            TimeOnly(hour: 19, minute: 10),
-            TimeOnly(hour: 18, minute: 15),
-            TimeOnly(hour: 05, minute: 50),
+            TimeOnly(hour: 00, minute: 00),
+            TimeOnly(hour: 00, minute: 00),
             TimeOnly(hour: 00, minute: 30),
-            TimeOnly(hour: 00, minute: 00),
-            TimeOnly(hour: 00, minute: 00),
+            TimeOnly(hour: 05, minute: 50),
+            TimeOnly(hour: 18, minute: 15),
+            TimeOnly(hour: 19, minute: 10),
+            TimeOnly(hour: 20, minute: 10),
         ]
-        XCTAssertEqual(sut, sut.sorted())
+        XCTAssertEqual(sut, sut.shuffled().sorted())
     }
 }

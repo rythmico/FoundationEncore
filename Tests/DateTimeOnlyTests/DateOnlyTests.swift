@@ -33,14 +33,14 @@ final class DateOnlyTests: XCTestCase {
 
     func testComparable() {
         let sut = [
-            DateOnly(year: 2021, month: 07, day: 03),
-            DateOnly(year: 2021, month: 07, day: 02),
-            DateOnly(year: 2021, month: 06, day: 03),
-            DateOnly(year: 2021, month: 06, day: 02),
-            DateOnly(year: 2020, month: 07, day: 03),
-            DateOnly(year: 2020, month: 07, day: 03),
             DateOnly(year: 2019, month: 11, day: 14),
+            DateOnly(year: 2020, month: 07, day: 03),
+            DateOnly(year: 2020, month: 07, day: 03),
+            DateOnly(year: 2021, month: 06, day: 02),
+            DateOnly(year: 2021, month: 06, day: 03),
+            DateOnly(year: 2021, month: 07, day: 02),
+            DateOnly(year: 2021, month: 07, day: 03),
         ]
-        XCTAssertEqual(sut, sut.sorted())
+        XCTAssertEqual(sut, sut.shuffled().sorted())
     }
 }
