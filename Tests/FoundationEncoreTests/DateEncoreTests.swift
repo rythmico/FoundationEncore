@@ -37,7 +37,7 @@ final class DateEncoreTests: XCTestCase {
         XCTAssertEqual(try sut + (1, .month, tz), "2021-11-24T18:07:00Z")
     }
 
-    func testSubstract() {
+    func testSubtract() {
         // BST to BST (DST)
         XCTAssertEqual(sut, try "2021-10-25T17:07:00Z" - (1, .day, tz))
         XCTAssertEqual(sut, try "2022-10-24T17:07:00Z" - (1, .year, tz))
