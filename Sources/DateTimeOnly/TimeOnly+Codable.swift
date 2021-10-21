@@ -13,32 +13,24 @@ extension TimeOnly: Codable {
         self = _self
     }
 
-    init?(rawValue: String) {
-        guard let date = Self.formatter.date(from: rawValue) else {
-            return nil
-        }
-        let dateComponents = calendar.dateComponents([.hour, .minute], from: date)
-        guard
-            let hour = dateComponents.hour,
-            let minute = dateComponents.minute
-        else {
-            return nil
-        }
-        self = TimeOnly(hour: hour, minute: minute)
-    }
-
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         try container.encode(rawValue)
     }
+}
+
+extension TimeOnly {
+    init?(rawValue: String) {
+        guard let date = Self.formatter.date(from: rawValue) else {
+            return nil
+        }
+        self = TimeOnly(date)
+    }
 
     var rawValue: String {
-        let dateComponents = DateComponents(
-            calendar: calendar,
-            timeZone: timeZone,
-            hour: hour,
-            minute: minute
-        )
+        var dateComponents = DateComponents(self)
+        dateComponents.calendar = calendar
+        dateComponents.timeZone = timeZone
         guard let date = dateComponents.date else {
             preconditionFailure("`DateComponents.date` returned nil")
         }

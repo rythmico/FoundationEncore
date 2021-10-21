@@ -54,7 +54,7 @@ private extension Date {
     init(_ dateOnly: DateOnly) {
         self.init(
             date: dateOnly,
-            time: TimeOnly(hour: 0, minute: 0),
+            time: try! TimeOnly(hour: 00, minute: 00),
             timeZone: timeZone
         )
     }

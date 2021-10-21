@@ -20,6 +20,12 @@ extension Date {
     }
 }
 
+extension DateOnly {
+    public var asDateComponents: DateComponents {
+        DateComponents(self)
+    }
+}
+
 extension DateComponents {
     public init(_ dateOnly: DateOnly) {
         self.init(
@@ -30,8 +36,17 @@ extension DateComponents {
     }
 }
 
-extension DateOnly {
+extension TimeOnly {
     public var asDateComponents: DateComponents {
         DateComponents(self)
+    }
+}
+
+extension DateComponents {
+    public init(_ timeOnly: TimeOnly) {
+        self.init(
+            hour: timeOnly.hour,
+            minute: timeOnly.minute
+        )
     }
 }
