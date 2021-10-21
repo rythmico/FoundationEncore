@@ -3,16 +3,54 @@ import Foundation
 /// Defines the components of a date, without any information about the time.
 ///
 /// This struct is meant as a subset of `DateComponents` with only year, month, and day.
-public struct DateOnly {
-    public var year: Int
-    public var month: Int
-    public var day: Int
+public struct DateOnly: Hashable {
+    public private(set) var year: Int
+    public private(set) var month: Int
+    public private(set) var day: Int
 
-    public init(year: Int, month: Int, day: Int) {
+    public init(year: Int, month: Int, day: Int) throws {
+        let components = DateComponents(
+            calendar: calendar,
+            timeZone: timeZone,
+            year: year,
+            month: month,
+            day: day
+        )
+        guard let date = components.date else {
+            throw DateOnlyInitError.invalidDateComponents(year: year, month: month, day: day)
+        }
+        self.init(date)
+    }
+}
+
+public enum DateOnlyInitError: LocalizedError {
+    case invalidDateComponents(year: Int, month: Int, day: Int)
+
+    public var errorDescription: String? {
+        switch self {
+        case .invalidDateComponents(let year, let month, let day):
+            return """
+            Date Only init failed:
+            - Year: \(year)
+            - Month: \(month)
+            - Day: \(day)
+            """
+        }
+    }
+}
+
+extension DateOnly {
+    init(_ date: Date) {
+        let dateComponents = calendar.dateComponents(in: timeZone, from: date)
+        guard
+            let year = dateComponents.year,
+            let month = dateComponents.month,
+            let day = dateComponents.day
+        else {
+            preconditionFailure("calendar.dateComponents(in:from:) is always guaranteed to return all date components")
+        }
         self.year = year
         self.month = month
         self.day = day
     }
 }
-
-extension DateOnly: Hashable {}

@@ -36,15 +36,7 @@ extension DateOnly {
         ) else {
             throw DateOnlyOperationError.cannotAdd(self, amount: amount, unit: unit)
         }
-        let newDateComponents = calendar.dateComponents(in: timeZone, from: newDate)
-        guard
-            let newYear = newDateComponents.year,
-            let newMonth = newDateComponents.month,
-            let newDay = newDateComponents.day
-        else {
-            preconditionFailure("calendar.dateComponents(in:from:) is always guaranteed to return all date components")
-        }
-        self = DateOnly(year: newYear, month: newMonth, day: newDay)
+        self = DateOnly(newDate)
     }
 
     public func adding(_ amount: Int, _ unit: Calendar.Component) throws -> Self {
