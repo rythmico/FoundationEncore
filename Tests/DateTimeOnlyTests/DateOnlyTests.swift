@@ -43,4 +43,53 @@ final class DateOnlyTests: XCTestCase {
         ]
         XCTAssertEqual(sut, sut.shuffled().sorted())
     }
+
+    func testAdd() {
+        let sut = DateOnly(year: 2021, month: 10, day: 24)
+        // BST to BST (DST) — but not really
+        XCTAssertEqual(try sut + (1, .day), DateOnly(year: 2021, month: 10, day: 25))
+        XCTAssertEqual(try sut + (3, .month), DateOnly(year: 2022, month: 01, day: 24))
+        XCTAssertEqual(try sut + (3, .year), DateOnly(year: 2024, month: 10, day: 24))
+        // BST to GMT (DST) — but not really
+        XCTAssertEqual(try sut + (1, .weekOfYear), DateOnly(year: 2021, month: 10, day: 31))
+        XCTAssertEqual(try sut + (2, .weekOfYear), DateOnly(year: 2021, month: 11, day: 07))
+        XCTAssertEqual(try sut + (1, .month), DateOnly(year: 2021, month: 11, day: 24))
+    }
+
+    func testAdd_toLeapDay() {
+        let sut = DateOnly(year: 2020, month: 02, day: 29) // leap day
+        XCTAssertEqual(try sut + (3, .day), DateOnly(year: 2020, month: 03, day: 03))
+        XCTAssertEqual(try sut + (3, .month), DateOnly(year: 2020, month: 05, day: 29))
+        XCTAssertEqual(try sut + (3, .year), DateOnly(year: 2023, month: 02, day: 28))
+    }
+
+    func testSubtract() {
+        let sut = DateOnly(year: 2021, month: 10, day: 24)
+        // BST to BST (DST) — but not really
+        XCTAssertEqual(sut, try DateOnly(year: 2021, month: 10, day: 25) - (1, .day))
+        XCTAssertEqual(sut, try DateOnly(year: 2022, month: 01, day: 24) - (3, .month))
+        XCTAssertEqual(sut, try DateOnly(year: 2024, month: 10, day: 24) - (3, .year))
+        // GMT to BST (DST) — but not really
+        XCTAssertEqual(sut, try DateOnly(year: 2021, month: 10, day: 31) - (1, .weekOfYear))
+        XCTAssertEqual(sut, try DateOnly(year: 2021, month: 11, day: 07) - (2, .weekOfYear))
+        XCTAssertEqual(sut, try DateOnly(year: 2021, month: 11, day: 24) - (1, .month))
+    }
+
+    func testSubtract_toLeapDay() {
+        let sut = DateOnly(year: 2020, month: 02, day: 29) // leap day
+        XCTAssertEqual(sut, try DateOnly(year: 2020, month: 03, day: 03) - (3, .day))
+        XCTAssertEqual(sut, try DateOnly(year: 2020, month: 05, day: 29) - (3, .month))
+        XCTAssertGreaterThan(sut, try DateOnly(year: 2023, month: 02, day: 28) - (3, .year))
+        XCTAssertEqual(try sut - (1, .day), try DateOnly(year: 2023, month: 02, day: 28) - (3, .year))
+    }
+
+    func testDiff() {
+        let sut = DateOnly(year: 2021, month: 10, day: 24) // leap day
+        // BST-BST (DST) — but not really
+        XCTAssertEqual(try sut - (DateOnly(year: 2021, month: 10, day: 24), .day), 0)
+        XCTAssertEqual(try sut - (DateOnly(year: 2021, month: 10, day: 21), .day), 3)
+        XCTAssertEqual(try sut - (DateOnly(year: 2011, month: 10, day: 24), .year), 10)
+        XCTAssertEqual(try sut - (DateOnly(year: 2011, month: 10, day: 24), .month), 120)
+        XCTAssertEqual(try sut - (DateOnly(year: 2021, month: 10, day: 30), .hour), -144)
+    }
 }
