@@ -19,3 +19,19 @@ extension Date {
         self = date
     }
 }
+
+extension DateComponents {
+    public init(_ dateOnly: DateOnly) {
+        self.init(
+            year: dateOnly.year,
+            month: dateOnly.month,
+            day: dateOnly.day
+        )
+    }
+}
+
+extension DateOnly {
+    public var asDateComponents: DateComponents {
+        DateComponents(self)
+    }
+}
