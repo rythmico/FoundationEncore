@@ -86,3 +86,41 @@ extension TimeOnlyTests {
         XCTAssertEqual(sut, sut.shuffled().sorted())
     }
 }
+
+extension TimeOnlyTests {
+    func testLosslessStringConvertible() {
+        try XCTAssertEqual(String(TimeOnly(hour: 05, minute: 07)), "05:07")
+
+        try XCTAssertEqual(String(TimeOnly(hour: 13, minute: 25)), "13:25")
+    }
+
+    func testCustomStringConvertible() {
+        try XCTAssertEqual(String(describing: TimeOnly(hour: 05, minute: 07)), "05:07")
+        try XCTAssertEqual(TimeOnly(hour: 05, minute: 07).description, "05:07")
+        try XCTAssertEqual("\(TimeOnly(hour: 05, minute: 07))", "05:07")
+
+        try XCTAssertEqual(String(describing: TimeOnly(hour: 13, minute: 25)), "13:25")
+        try XCTAssertEqual(TimeOnly(hour: 13, minute: 25).description, "13:25")
+        try XCTAssertEqual("\(TimeOnly(hour: 13, minute: 25))", "13:25")
+    }
+
+    func testCustomDebugStringConvertible() {
+        try XCTAssertEqual(
+            String(reflecting: TimeOnly(hour: 05, minute: 07)),
+            "TimeOnly(hour: 5, minute: 7)"
+        )
+        try XCTAssertEqual(
+            TimeOnly(hour: 05, minute: 07).debugDescription,
+            "TimeOnly(hour: 5, minute: 7)"
+        )
+
+        try XCTAssertEqual(
+            String(reflecting: TimeOnly(hour: 13, minute: 25)),
+            "TimeOnly(hour: 13, minute: 25)"
+        )
+        try XCTAssertEqual(
+            TimeOnly(hour: 13, minute: 25).debugDescription,
+            "TimeOnly(hour: 13, minute: 25)"
+        )
+    }
+}
