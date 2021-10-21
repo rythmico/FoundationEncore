@@ -90,6 +90,29 @@ extension DateOnlyTests {
 }
 
 extension DateOnlyTests {
+    func testLosslessStringConvertible() {
+        try XCTAssertEqual(String(DateOnly(year: 2020, month: 02, day: 29)), "2020-02-29")
+    }
+
+    func testCustomStringConvertible() {
+        try XCTAssertEqual(String(describing: DateOnly(year: 2020, month: 02, day: 29)), "2020-02-29")
+        try XCTAssertEqual(DateOnly(year: 2020, month: 02, day: 29).description, "2020-02-29")
+        try XCTAssertEqual("\(DateOnly(year: 2020, month: 02, day: 29))", "2020-02-29")
+    }
+
+    func testCustomDebugStringConvertible() {
+        try XCTAssertEqual(
+            String(reflecting: DateOnly(year: 2020, month: 02, day: 29)),
+            "DateOnly(year: 2020, month: 2, day: 29)"
+        )
+        try XCTAssertEqual(
+            DateOnly(year: 2020, month: 02, day: 29).debugDescription,
+            "DateOnly(year: 2020, month: 2, day: 29)"
+        )
+    }
+}
+
+extension DateOnlyTests {
     func testAdd() throws {
         let sut = try DateOnly(year: 2021, month: 10, day: 24)
         // BST to BST (DST) — but not really
