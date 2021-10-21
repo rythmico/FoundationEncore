@@ -124,3 +124,55 @@ extension TimeOnlyTests {
         )
     }
 }
+
+extension TimeOnlyTests {
+    func testAdd() throws {
+        let sut = try TimeOnly(hour: 05, minute: 07)
+
+        try XCTAssertEqual(sut + (30, .second), TimeOnly(hour: 05, minute: 07))
+        try XCTAssertEqual(sut + (60, .second), TimeOnly(hour: 05, minute: 08))
+        try XCTAssertEqual(sut + (1, .hour), TimeOnly(hour: 06, minute: 07))
+        try XCTAssertEqual(sut + (3, .minute), TimeOnly(hour: 05, minute: 10))
+        try XCTAssertEqual(sut + (14, .hour), TimeOnly(hour: 19, minute: 07))
+        try XCTAssertEqual(sut + (28, .hour), TimeOnly(hour: 09, minute: 07))
+
+        try XCTAssertEqual(sut + (1, .day), TimeOnly(hour: 05, minute: 07))
+        try XCTAssertEqual(sut + (1, .weekOfYear), TimeOnly(hour: 05, minute: 07))
+        try XCTAssertEqual(sut + (2, .weekOfYear), TimeOnly(hour: 05, minute: 07))
+        try XCTAssertEqual(sut + (3, .month), TimeOnly(hour: 05, minute: 07))
+        try XCTAssertEqual(sut + (3, .year), TimeOnly(hour: 05, minute: 07))
+    }
+
+    func testSubtract() throws {
+        let sut = try TimeOnly(hour: 05, minute: 07)
+
+        try XCTAssertEqual(TimeOnly(hour: 05, minute: 06), TimeOnly(hour: 05, minute: 07) - (30, .second))
+        try XCTAssertEqual(sut, TimeOnly(hour: 05, minute: 08) - (60, .second))
+        try XCTAssertEqual(sut, TimeOnly(hour: 06, minute: 07) - (1, .hour))
+        try XCTAssertEqual(sut, TimeOnly(hour: 05, minute: 10) - (3, .minute))
+        try XCTAssertEqual(sut, TimeOnly(hour: 19, minute: 07) - (14, .hour))
+        try XCTAssertEqual(sut, TimeOnly(hour: 09, minute: 07) - (28, .hour))
+
+        try XCTAssertEqual(sut, TimeOnly(hour: 05, minute: 07) - (1, .day))
+        try XCTAssertEqual(sut, TimeOnly(hour: 05, minute: 07) - (1, .weekOfYear))
+        try XCTAssertEqual(sut, TimeOnly(hour: 05, minute: 07) - (2, .weekOfYear))
+        try XCTAssertEqual(sut, TimeOnly(hour: 05, minute: 07) - (3, .month))
+        try XCTAssertEqual(sut, TimeOnly(hour: 05, minute: 07) - (3, .year))
+    }
+
+    func testDiff() throws {
+        let sut = try TimeOnly(hour: 13, minute: 25)
+
+        try XCTAssertEqual(sut - (TimeOnly(hour: 00, minute: 00), .day), 0)
+        try XCTAssertEqual(sut - (TimeOnly(hour: 05, minute: 07), .day), 0)
+        try XCTAssertEqual(sut - (TimeOnly(hour: 05, minute: 07), .month), 0)
+        try XCTAssertEqual(sut - (TimeOnly(hour: 05, minute: 07), .year), 0)
+
+        try XCTAssertEqual(sut - (TimeOnly(hour: 05, minute: 07), .hour), 8)
+        try XCTAssertEqual(sut - (TimeOnly(hour: 13, minute: 22), .hour), 0)
+        try XCTAssertEqual(sut - (TimeOnly(hour: 13, minute: 22), .minute), 3)
+        try XCTAssertEqual(sut - (TimeOnly(hour: 13, minute: 25), .minute), 0)
+        try XCTAssertEqual(sut - (TimeOnly(hour: 13, minute: 24), .second), 60)
+        try XCTAssertEqual(sut - (TimeOnly(hour: 05, minute: 25), .second), 8 * 3600)
+    }
+}
