@@ -52,11 +52,13 @@ extension DateOnly {
 
 private extension Date {
     init(_ dateOnly: DateOnly) {
-        self.init(
-            date: dateOnly,
-            time: try! TimeOnly(hour: 00, minute: 00),
-            timeZone: timeZone
-        )
+        var dateComponents = DateComponents(dateOnly)
+        dateComponents.calendar = calendar
+        dateComponents.timeZone = timeZone
+        guard let date = dateComponents.date else {
+            preconditionFailure("`DateComponents.date` returned nil")
+        }
+        self = date
     }
 }
 
