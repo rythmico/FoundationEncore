@@ -7,7 +7,7 @@ public struct TimeOnly: Hashable {
     public private(set) var hour: Int
     public private(set) var minute: Int
 
-    public init(hour: Int, minute: Int) throws {
+    public init(hour: Int, minute: Int) {
         let components = DateComponents(
             calendar: calendar,
             timeZone: timeZone,
@@ -15,24 +15,9 @@ public struct TimeOnly: Hashable {
             minute: minute
         )
         guard let date = components.date else {
-            throw TimeOnlyInitError.invalidDateComponents(hour: hour, minute: minute)
+            preconditionFailure("`DateComponents.date` returned nil")
         }
         self.init(date)
-    }
-}
-
-public enum TimeOnlyInitError: LocalizedError {
-    case invalidDateComponents(hour: Int, minute: Int)
-
-    public var errorDescription: String? {
-        switch self {
-        case .invalidDateComponents(let hour, let minute):
-            return """
-            Time Only init failed:
-            - Hour: \(hour)
-            - Minute: \(minute)
-            """
-        }
     }
 }
 

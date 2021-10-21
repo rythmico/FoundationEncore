@@ -8,7 +8,7 @@ public struct DateOnly: Hashable {
     public private(set) var month: Int
     public private(set) var day: Int
 
-    public init(year: Int, month: Int, day: Int) throws {
+    public init(year: Int, month: Int, day: Int) {
         let components = DateComponents(
             calendar: calendar,
             timeZone: timeZone,
@@ -17,25 +17,9 @@ public struct DateOnly: Hashable {
             day: day
         )
         guard let date = components.date else {
-            throw DateOnlyInitError.invalidDateComponents(year: year, month: month, day: day)
+            preconditionFailure("`DateComponents.date` returned nil")
         }
         self.init(date)
-    }
-}
-
-public enum DateOnlyInitError: LocalizedError {
-    case invalidDateComponents(year: Int, month: Int, day: Int)
-
-    public var errorDescription: String? {
-        switch self {
-        case .invalidDateComponents(let year, let month, let day):
-            return """
-            Date Only init failed:
-            - Year: \(year)
-            - Month: \(month)
-            - Day: \(day)
-            """
-        }
     }
 }
 
