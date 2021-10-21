@@ -13,34 +13,24 @@ extension DateOnly: Codable {
         self = _self
     }
 
-    init?(rawValue: String) {
-        guard let date = Self.formatter.date(from: rawValue) else {
-            return nil
-        }
-        let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
-        guard
-            let year = dateComponents.year,
-            let month = dateComponents.month,
-            let day = dateComponents.day
-        else {
-            return nil
-        }
-        self = DateOnly(year: year, month: month, day: day)
-    }
-
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         try container.encode(rawValue)
     }
+}
+
+extension DateOnly {
+    init?(rawValue: String) {
+        guard let date = Self.formatter.date(from: rawValue) else {
+            return nil
+        }
+        self = DateOnly(date)
+    }
 
     var rawValue: String {
-        let dateComponents = DateComponents(
-            calendar: calendar,
-            timeZone: timeZone,
-            year: year,
-            month: month,
-            day: day
-        )
+        var dateComponents = DateComponents(self)
+        dateComponents.calendar = calendar
+        dateComponents.timeZone = timeZone
         guard let date = dateComponents.date else {
             preconditionFailure("`DateComponents.date` returned nil")
         }
