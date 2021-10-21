@@ -8,6 +8,9 @@ public struct TimeOnly: Hashable {
     public private(set) var minute: Int
 
     public init(hour: Int, minute: Int) throws {
+        guard hour >= 0, minute >= 0 else {
+            throw TimeOnlyInitError.invalidDateComponents(hour: hour, minute: minute)
+        }
         let components = DateComponents(
             calendar: calendar,
             timeZone: timeZone,

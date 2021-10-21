@@ -9,6 +9,9 @@ public struct DateOnly: Hashable {
     public private(set) var day: Int
 
     public init(year: Int, month: Int, day: Int) throws {
+        guard year > 0, month > 0, day > 0 else {
+            throw DateOnlyInitError.invalidDateComponents(year: year, month: month, day: day)
+        }
         let components = DateComponents(
             calendar: calendar,
             timeZone: timeZone,

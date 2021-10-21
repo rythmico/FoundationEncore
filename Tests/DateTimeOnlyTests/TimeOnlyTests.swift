@@ -30,17 +30,27 @@ extension TimeOnlyTests {
             TimeOnly(hour: 00, minute: 00)
         )
         try XCTAssertEqual(
-            TimeOnly(hour: -1, minute: 12),
-            TimeOnly(hour: 23, minute: 12)
+            TimeOnly(hour: .max, minute: .max),
+            TimeOnly(hour: 00, minute: 00)
         )
-        try XCTAssertEqual(
-            TimeOnly(hour: -120, minute: 12),
-            TimeOnly(hour: 00, minute: 12)
-        )
-        try XCTAssertEqual(
-            TimeOnly(hour: -120, minute: 13),
-            TimeOnly(hour: 00, minute: 13)
-        )
+
+        func assertInitThrows(hour: Int, minute: Int, file: StaticString = #file, line: UInt = #line) {
+            XCTAssertThrowsError(try TimeOnly(hour: hour, minute: minute), file: file, line: line) { error in
+                switch error {
+                case TimeOnlyInitError.invalidDateComponents(let h, let m):
+                    XCTAssertEqual(h, hour, file: file, line: line)
+                    XCTAssertEqual(m, minute, file: file, line: line)
+                    break
+                default:
+                    XCTFail("Unexpected error received: \(error)")
+                }
+            }
+        }
+
+        assertInitThrows(hour: -1, minute: 12)
+        assertInitThrows(hour: -120, minute: 12)
+        assertInitThrows(hour: 1, minute: -13)
+        assertInitThrows(hour: .min, minute: .min)
     }
 }
 
@@ -60,15 +70,13 @@ extension TimeOnlyTests {
     }
 
     func testEncode() throws {
+        try XCTAssertJSONEncoding(TimeOnly(hour: 23, minute: 59), "23:59")
         try XCTAssertJSONEncoding(TimeOnly(hour: 20, minute: 10), "20:10")
         try XCTAssertJSONEncoding(TimeOnly(hour: 19, minute: 10), "19:10")
         try XCTAssertJSONEncoding(TimeOnly(hour: 18, minute: 15), "18:15")
         try XCTAssertJSONEncoding(TimeOnly(hour: 05, minute: 50), "05:50")
         try XCTAssertJSONEncoding(TimeOnly(hour: 00, minute: 30), "00:30")
         try XCTAssertJSONEncoding(TimeOnly(hour: 00, minute: 00), "00:00")
-        try XCTAssertJSONEncoding(TimeOnly(hour: -1, minute: 12), "23:12")
-        try XCTAssertJSONEncoding(TimeOnly(hour: -120, minute: 12), "00:12")
-        try XCTAssertJSONEncoding(TimeOnly(hour: -120, minute: 13), "00:13")
     }
 }
 

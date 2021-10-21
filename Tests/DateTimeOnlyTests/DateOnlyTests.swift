@@ -26,21 +26,29 @@ extension DateOnlyTests {
             DateOnly(year: 1, month: 12, day: 03)
         )
         try XCTAssertEqual(
-            DateOnly(year: 0, month: 12, day: 03),
-            DateOnly(year: 1, month: 12, day: 03)
+            DateOnly(year: .max, month: .max, day: .max),
+            DateOnly(year: 0001, month: 01, day: 01)
         )
-        try XCTAssertEqual(
-            DateOnly(year: -1, month: 12, day: 03),
-            DateOnly(year: 2, month: 12, day: 03)
-        )
-        try XCTAssertEqual(
-            DateOnly(year: -120, month: 12, day: 03),
-            DateOnly(year: 121, month: 12, day: 03)
-        )
-        try XCTAssertEqual(
-            DateOnly(year: -120, month: 13, day: 03),
-            DateOnly(year: 120, month: 01, day: 03)
-        )
+
+        func assertInitThrows(year: Int, month: Int, day: Int, file: StaticString = #file, line: UInt = #line) {
+            XCTAssertThrowsError(try DateOnly(year: year, month: month, day: day), file: file, line: line) { error in
+                switch error {
+                case DateOnlyInitError.invalidDateComponents(let y, let m, let d):
+                    XCTAssertEqual(y, year, file: file, line: line)
+                    XCTAssertEqual(m, month, file: file, line: line)
+                    XCTAssertEqual(d, day, file: file, line: line)
+                    break
+                default:
+                    XCTFail("Unexpected error received: \(error)")
+                }
+            }
+        }
+
+        assertInitThrows(year: 0, month: 12, day: 03)
+        assertInitThrows(year: -1, month: 12, day: 03)
+        assertInitThrows(year: -120, month: 12, day: 03)
+        assertInitThrows(year: -120, month: 13, day: 03)
+        assertInitThrows(year: .min, month: .min, day: .min)
     }
 }
 
@@ -67,10 +75,9 @@ extension DateOnlyTests {
         try XCTAssertJSONEncoding(DateOnly(year: 2019, month: 12, day: 03), "2019-12-03")
         try XCTAssertJSONEncoding(DateOnly(year: 103, month: 12, day: 03), "0103-12-03")
         try XCTAssertJSONEncoding(DateOnly(year: 1, month: 12, day: 03), "0001-12-03")
-        try XCTAssertJSONEncoding(DateOnly(year: 0, month: 12, day: 03), "0001-12-03")
-        try XCTAssertJSONEncoding(DateOnly(year: -1, month: 12, day: 03), "0002-12-03")
-        try XCTAssertJSONEncoding(DateOnly(year: -120, month: 12, day: 03), "0121-12-03")
-        try XCTAssertJSONEncoding(DateOnly(year: -120, month: 13, day: 03), "0120-01-03")
+        #if !os(Linux)
+        try XCTAssertJSONEncoding(DateOnly(year: .max, month: .max, day: .max), "0001-01-01")
+        #endif
     }
 }
 
