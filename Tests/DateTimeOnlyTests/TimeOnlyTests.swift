@@ -1,7 +1,9 @@
 import DateTimeOnly
 import XCTJSONKit
 
-final class TimeOnlyTests: XCTestCase {
+final class TimeOnlyTests: XCTestCase {}
+
+extension TimeOnlyTests {
     func testDecode() throws {
         try XCTAssertJSONDecoding("20:10", TimeOnly(hour: 20, minute: 10))
         try XCTAssertJSONDecoding("19:10", TimeOnly(hour: 19, minute: 10))
@@ -28,7 +30,9 @@ final class TimeOnlyTests: XCTestCase {
 
         try XCTAssertJSONEncoding(TimeOnly(hour: -120, minute: 13), "00:13")
     }
+}
 
+extension TimeOnlyTests {
     func testComparable() {
         let sut = [
             TimeOnly(hour: 00, minute: 00),

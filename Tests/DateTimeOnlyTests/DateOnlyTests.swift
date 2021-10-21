@@ -1,7 +1,9 @@
 import DateTimeOnly
 import XCTJSONKit
 
-final class DateOnlyTests: XCTestCase {
+final class DateOnlyTests: XCTestCase {}
+
+extension DateOnlyTests {
     func testDecode() throws {
         try XCTAssertJSONDecoding("10300-07-14", DateOnly(year: 10300, month: 07, day: 14))
         try XCTAssertJSONDecoding("2021-07-14", DateOnly(year: 2021, month: 07, day: 14))
@@ -30,7 +32,9 @@ final class DateOnlyTests: XCTestCase {
 
         try XCTAssertJSONEncoding(DateOnly(year: -120, month: 13, day: 03), "0120-01-03")
     }
+}
 
+extension DateOnlyTests {
     func testComparable() {
         let sut = [
             DateOnly(year: 2019, month: 11, day: 14),
@@ -43,7 +47,9 @@ final class DateOnlyTests: XCTestCase {
         ]
         XCTAssertEqual(sut, sut.shuffled().sorted())
     }
+}
 
+extension DateOnlyTests {
     func testAdd() {
         let sut = DateOnly(year: 2021, month: 10, day: 24)
         // BST to BST (DST) — but not really
