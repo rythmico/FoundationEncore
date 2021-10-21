@@ -2,9 +2,9 @@ import DateTimeOnly
 import XCTest
 
 final class FoundationSupportTests: XCTestCase {
-    func testDate_initFromDateOnly_timeOnly_timeZone() {
+    func testDate_initFromDateOnly_timeOnly_timeZone() throws {
         let tz = TimeZone(identifier: "Europe/London")!
-        XCTAssertEqual(
+        try XCTAssertEqual(
             Date(
                 date: DateOnly(year: 2021, month: 10, day: 24), // BST
                 time: TimeOnly(hour: 18, minute: 07),
@@ -12,7 +12,7 @@ final class FoundationSupportTests: XCTestCase {
             ),
             "2021-10-24T17:07:00Z"
         )
-        XCTAssertEqual(
+        try XCTAssertEqual(
             Date(
                 date: DateOnly(year: 2021, month: 10, day: 31), // ???
                 time: TimeOnly(hour: 00, minute: 00), // BST
@@ -20,7 +20,7 @@ final class FoundationSupportTests: XCTestCase {
             ),
             "2021-10-30T23:00:00Z"
         )
-        XCTAssertEqual(
+        try XCTAssertEqual(
             Date(
                 date: DateOnly(year: 2021, month: 10, day: 31), // ???
                 time: TimeOnly(hour: 18, minute: 07), // GMT
@@ -28,7 +28,7 @@ final class FoundationSupportTests: XCTestCase {
             ),
             "2021-10-31T18:07:00Z"
         )
-        XCTAssertEqual(
+        try XCTAssertEqual(
             Date(
                 date: DateOnly(year: 2021, month: 11, day: 01), // GMT
                 time: TimeOnly(hour: 18, minute: 07),
