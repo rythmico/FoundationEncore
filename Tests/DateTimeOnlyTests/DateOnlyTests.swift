@@ -105,6 +105,18 @@ extension DateOnlyTests {
 }
 
 extension DateOnlyTests {
+    func testFormat() throws {
+        let locale = try XCTUnwrap(Locale(identifier: "en_GB"))
+        let sut = try DateOnly(year: 2019, month: 11, day: 14)
+        XCTAssertEqual(sut.formatted(style: .none, locale: locale), "")
+        XCTAssertEqual(sut.formatted(style: .short, locale: locale), "14/11/2019")
+        XCTAssertEqual(sut.formatted(style: .medium, locale: locale), "14 Nov 2019")
+        XCTAssertEqual(sut.formatted(style: .long, locale: locale), "14 November 2019")
+        XCTAssertEqual(sut.formatted(style: .full, locale: locale), "Thursday, 14 November 2019")
+    }
+}
+
+extension DateOnlyTests {
     func testLosslessStringConvertible() {
         try XCTAssertEqual(String(DateOnly(year: 2020, month: 02, day: 29)), "2020-02-29")
     }

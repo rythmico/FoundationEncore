@@ -103,6 +103,18 @@ extension TimeOnlyTests {
 }
 
 extension TimeOnlyTests {
+    func testFormat() throws {
+        let locale = try XCTUnwrap(Locale(identifier: "en_GB"))
+        let sut = try TimeOnly(hour: 18, minute: 15)
+        XCTAssertEqual(sut.formatted(style: .none, locale: locale), "")
+        XCTAssertEqual(sut.formatted(style: .short, locale: locale), "18:15")
+        XCTAssertEqual(sut.formatted(style: .medium, locale: locale), "18:15:00")
+        XCTAssertEqual(sut.formatted(style: .long, locale: locale), "18:15:00 GMT")
+        XCTAssertEqual(sut.formatted(style: .full, locale: locale), "18:15:00 GMT")
+    }
+}
+
+extension TimeOnlyTests {
     func testLosslessStringConvertible() {
         try XCTAssertEqual(String(TimeOnly(hour: 05, minute: 07)), "05:07")
 

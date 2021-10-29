@@ -8,3 +8,15 @@ let calendar: Calendar = {
     calendar.timeZone = timeZone
     return calendar
 }()
+let dateOnlyFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.timeZone = timeZone
+    formatter.calendar = calendar
+    return formatter
+}()
+let timeOnlyFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.timeZone = timeZone
+    formatter.calendar = calendar
+    return formatter
+}()

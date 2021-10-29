@@ -26,6 +26,20 @@ extension DateComponents {
     }
 }
 
+extension Date {
+    public init(_ dateOnly: DateOnly, timeZone: TimeZone) {
+        var calendar = calendar
+        calendar.timeZone = timeZone
+        var dateComponents = DateComponents(dateOnly)
+        dateComponents.calendar = calendar
+        dateComponents.timeZone = timeZone
+        guard let date = dateComponents.date else {
+            preconditionFailure("`DateComponents.date` returned nil")
+        }
+        self = date
+    }
+}
+
 extension DateOnly {
     public var asDateComponents: DateComponents {
         DateComponents(self)
@@ -39,6 +53,20 @@ extension DateComponents {
             month: dateOnly.month,
             day: dateOnly.day
         )
+    }
+}
+
+extension Date {
+    public init(_ timeOnly: TimeOnly, timeZone: TimeZone) {
+        var calendar = calendar
+        calendar.timeZone = timeZone
+        var dateComponents = DateComponents(timeOnly)
+        dateComponents.calendar = calendar
+        dateComponents.timeZone = timeZone
+        guard let date = dateComponents.date else {
+            preconditionFailure("`DateComponents.date` returned nil")
+        }
+        self = date
     }
 }
 
