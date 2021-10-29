@@ -50,6 +50,14 @@ extension DateOnlyTests {
         assertInitThrows(year: -120, month: 13, day: 03)
         assertInitThrows(year: .min, month: .min, day: .min)
     }
+
+    func testInitFromDateAndTimeZone() throws {
+        let timeZone = try XCTUnwrap(TimeZone(identifier: "Europe/London"))
+        let sut = DateOnly("2021-10-29T23:00:00Z", for: timeZone)
+        XCTAssertEqual(sut.year, 2021)
+        XCTAssertEqual(sut.month, 10)
+        XCTAssertEqual(sut.day, 30)
+    }
 }
 
 extension DateOnlyTests {

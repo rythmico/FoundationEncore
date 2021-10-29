@@ -52,6 +52,13 @@ extension TimeOnlyTests {
         assertInitThrows(hour: 1, minute: -13)
         assertInitThrows(hour: .min, minute: .min)
     }
+
+    func testInitFromDateAndTimeZone() throws {
+        let timeZone = try XCTUnwrap(TimeZone(identifier: "Europe/London"))
+        let sut = TimeOnly("2021-10-29T17:30:00Z", for: timeZone)
+        XCTAssertEqual(sut.hour, 18)
+        XCTAssertEqual(sut.minute, 30)
+    }
 }
 
 extension TimeOnlyTests {

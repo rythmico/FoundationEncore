@@ -24,7 +24,7 @@ extension TimeOnly {
         guard let date = Self.formatter.date(from: rawValue) else {
             return nil
         }
-        self = TimeOnly(date)
+        self = TimeOnly(date, for: timeZone)
     }
 
     var rawValue: String {
