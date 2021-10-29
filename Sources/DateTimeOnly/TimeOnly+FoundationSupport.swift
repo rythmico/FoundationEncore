@@ -28,3 +28,12 @@ extension DateComponents {
         )
     }
 }
+
+extension DateInterval {
+    public init(start: TimeOnly, end: TimeOnly, timeZone: TimeZone) {
+        self.init(
+            start: Date(start, timeZone: timeZone),
+            end: Date(end, timeZone: timeZone)
+        )
+    }
+}

@@ -20,3 +20,17 @@ let timeOnlyFormatter: DateFormatter = {
     formatter.calendar = calendar
     return formatter
 }()
+let dateOnlyIntervalFormatter: DateIntervalFormatter = {
+    let formatter = DateIntervalFormatter()
+    formatter.timeZone = timeZone
+    formatter.calendar = calendar
+    formatter.timeStyle = .none
+    return formatter
+}()
+let timeOnlyIntervalFormatter: DateIntervalFormatter = {
+    let formatter = DateIntervalFormatter()
+    formatter.timeZone = timeZone
+    formatter.calendar = calendar
+    formatter.dateStyle = .none
+    return formatter
+}()
