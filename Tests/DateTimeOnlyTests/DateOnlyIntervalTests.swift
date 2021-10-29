@@ -25,11 +25,19 @@ extension DateOnlyIntervalTests {
     func testFormat() throws {
         let locale = try XCTUnwrap(Locale(identifier: "en_GB"))
         let sut = try sut()
+        #if os(Linux)
+        XCTAssertEqual(sut.formatted(style: .none, locale: locale), "")
+        XCTAssertEqual(sut.formatted(style: .short, locale: locale), "29/10/2021 – 12/11/2021")
+        XCTAssertEqual(sut.formatted(style: .medium, locale: locale), "29 Oct – 12 Nov 2021")
+        XCTAssertEqual(sut.formatted(style: .long, locale: locale), "29 October – 12 November 2021")
+        XCTAssertEqual(sut.formatted(style: .full, locale: locale), "Friday, 29 October – Friday, 12 November 2021")
+        #else
         XCTAssertEqual(sut.formatted(style: .none, locale: locale), "")
         XCTAssertEqual(sut.formatted(style: .short, locale: locale), "29/10/2021 – 12/11/2021")
         XCTAssertEqual(sut.formatted(style: .medium, locale: locale), "29 Oct – 12 Nov 2021")
         XCTAssertEqual(sut.formatted(style: .long, locale: locale), "29 October – 12 November 2021")
         XCTAssertEqual(sut.formatted(style: .full, locale: locale), "Friday, 29 October – Friday, 12 November 2021")
+        #endif
     }
 }
 

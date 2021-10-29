@@ -120,7 +120,11 @@ extension DateOnlyTests {
         let sut = try DateOnly(year: 2019, month: 11, day: 14)
         XCTAssertEqual(sut.formatted(custom: "", locale: locale), "")
         XCTAssertEqual(sut.formatted(custom: "EEEE", locale: locale), "Thursday")
+        #if os(Linux)
+        XCTAssertEqual(sut.formatted(custom: "EEEE d MMMM", locale: locale), "Thursday, 14 November")
+        #else
         XCTAssertEqual(sut.formatted(custom: "EEEE d MMMM", locale: locale), "Thursday 14 November")
+        #endif
     }
 }
 

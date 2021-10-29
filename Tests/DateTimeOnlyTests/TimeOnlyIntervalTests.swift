@@ -25,11 +25,19 @@ extension TimeOnlyIntervalTests {
     func testFormat() throws {
         let locale = try XCTUnwrap(Locale(identifier: "en_GB"))
         let sut = try sut()
+        #if os(Linux)
+        XCTAssertEqual(sut.formatted(style: .none, locale: locale), "")
+        XCTAssertEqual(sut.formatted(style: .short, locale: locale), "17:15–03:35")
+        XCTAssertEqual(sut.formatted(style: .medium, locale: locale), "17:15:00 – 03:35:00")
+        XCTAssertEqual(sut.formatted(style: .long, locale: locale), "17:15:00 GMT – 03:35:00 GMT")
+        XCTAssertEqual(sut.formatted(style: .full, locale: locale), "17:15:00 GMT – 03:35:00 GMT")
+        #else
         XCTAssertEqual(sut.formatted(style: .none, locale: locale), "")
         XCTAssertEqual(sut.formatted(style: .short, locale: locale), "17:15–03:35")
         XCTAssertEqual(sut.formatted(style: .medium, locale: locale), "17:15:00 – 03:35:00")
         XCTAssertEqual(sut.formatted(style: .long, locale: locale), "17:15:00 GMT – 03:35:00 GMT")
         XCTAssertEqual(sut.formatted(style: .full, locale: locale), "17:15:00 GMT – 03:35:00 GMT")
+        #endif
     }
 }
 
