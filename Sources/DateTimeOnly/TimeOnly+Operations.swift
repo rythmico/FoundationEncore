@@ -36,7 +36,7 @@ extension TimeOnly {
         ) else {
             throw TimeOnlyOperationError.cannotAdd(self, amount: amount, unit: unit)
         }
-        self = TimeOnly(newDate, for: timeZone)
+        self = TimeOnly(newDate, timeZone: timeZone)
     }
 
     public func adding(_ amount: Int, _ unit: Calendar.Component) throws -> Self {
