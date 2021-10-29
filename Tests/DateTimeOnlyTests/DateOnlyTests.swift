@@ -114,6 +114,14 @@ extension DateOnlyTests {
         XCTAssertEqual(sut.formatted(style: .long, locale: locale), "14 November 2019")
         XCTAssertEqual(sut.formatted(style: .full, locale: locale), "Thursday, 14 November 2019")
     }
+
+    func testCustomFormat() throws {
+        let locale = try XCTUnwrap(Locale(identifier: "en_GB"))
+        let sut = try DateOnly(year: 2019, month: 11, day: 14)
+        XCTAssertEqual(sut.formatted(custom: "", locale: locale), "")
+        XCTAssertEqual(sut.formatted(custom: "EEEE", locale: locale), "Thursday")
+        XCTAssertEqual(sut.formatted(custom: "EEEE d MMMM", locale: locale), "Thursday 14 November")
+    }
 }
 
 extension DateOnlyTests {

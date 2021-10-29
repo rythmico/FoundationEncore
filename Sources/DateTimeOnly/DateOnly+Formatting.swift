@@ -2,8 +2,14 @@ import Foundation
 
 extension DateOnly {
     public func formatted(style: DateFormatter.Style, locale: Locale) -> String {
-        dateOnlyFormatter.dateStyle = style
         dateOnlyFormatter.locale = locale
+        dateOnlyFormatter.dateStyle = style
+        return dateOnlyFormatter.string(from: Date(self, timeZone: timeZone))
+    }
+
+    public func formatted(custom: String, locale: Locale) -> String {
+        dateOnlyFormatter.locale = locale
+        dateOnlyFormatter.setLocalizedDateFormatFromTemplate(custom)
         return dateOnlyFormatter.string(from: Date(self, timeZone: timeZone))
     }
 }
