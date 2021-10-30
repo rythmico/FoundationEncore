@@ -68,7 +68,7 @@ let package = Package(
 
 package.dependencies = [
     .package(name: "CwlPreconditionTesting", url: "https://github.com/mattgallagher/CwlPreconditionTesting", from: "2.0.2"),
-    .package(name: "LegibleError", url: "https://github.com/mxcl/LegibleError", from: "1.0.5"),
+    .package(name: "LegibleError", url: "https://github.com/davdroman/LegibleError", .branch("master")),
     .package(name: "PeriodDuration", url: "https://github.com/davdroman/PeriodDuration", from: "0.2.0"),
     .package(name: "PreciseDecimal", url: "https://github.com/davdroman/PreciseDecimal", from: "1.0.0"),
     .package(name: "swift-algorithms", url: "https://github.com/apple/swift-algorithms", from: "0.2.1"),
