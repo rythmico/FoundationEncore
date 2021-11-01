@@ -71,7 +71,9 @@ let package = Package(
             .product(name: "CwlPreconditionTesting", package: "CwlPreconditionTesting", condition: .when(platforms: [.macOS, .iOS])),
         ]),
 
-        .target(name: "RawRepresentableWithUnknown"),
+        .target(name: "RawRepresentableWithUnknown", dependencies: [
+            .product(name: "CasePaths", package: "swift-case-paths"),
+        ]),
         .testTarget(name: "RawRepresentableWithUnknownTests", dependencies: [
             .target(name: "RawRepresentableWithUnknown"),
             .product(name: "XCTJSONKit", package: "XCTJSONKit"),
