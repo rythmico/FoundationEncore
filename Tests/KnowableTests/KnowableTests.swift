@@ -1,11 +1,8 @@
-import RawRepresentableWithUnknown
+import Knowable
 import XCTJSONKit
 
-final class RawRepresentableWithUnknownTests: XCTestCase {
-    enum SUT: RawRepresentableWithUnknown, Codable, CustomDebugStringConvertible, Hashable {
-        case known(KnownSUT)
-        case unknown(String)
-    }
+final class KnowableTests: XCTestCase {
+    typealias SUT = Knowable<KnownSUT>
 
     enum KnownSUT: String, CaseIterable {
         case foo
@@ -58,11 +55,11 @@ final class RawRepresentableWithUnknownTests: XCTestCase {
 
     func testDebugDescription() {
         // Known
-        XCTAssertEqual(SUT.known(.foo).debugDescription, "SUT.known(foo)")
-        XCTAssertEqual("\(SUT.known(.foo))", "SUT.known(foo)")
+        XCTAssertEqual(SUT.known(.foo).debugDescription, "Knowable<KnownSUT>.known(foo)")
+        XCTAssertEqual("\(SUT.known(.foo))", "Knowable<KnownSUT>.known(foo)")
         // Unknown
-        XCTAssertEqual(SUT.unknown("baz").debugDescription, "SUT.unknown(baz)")
-        XCTAssertEqual("\(SUT.unknown("baz"))", "SUT.unknown(baz)")
+        XCTAssertEqual(SUT.unknown("baz").debugDescription, "Knowable<KnownSUT>.unknown(baz)")
+        XCTAssertEqual("\(SUT.unknown("baz"))", "Knowable<KnownSUT>.unknown(baz)")
     }
 
     func testEquatable() {

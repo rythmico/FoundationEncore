@@ -28,12 +28,12 @@ let package = Package(
             .target(name: "DateTimeOnly"),
             .target(name: "Do"),
             .target(name: "EnumTag"),
+            .target(name: "Knowable"),
             .product(name: "LegibleError", package: "LegibleError"),
             .target(name: "NilGuardingOperators"),
             .product(name: "NonEmpty", package: "swift-nonempty"),
             .product(name: "PeriodDuration", package: "PeriodDuration"),
             .product(name: "PreciseDecimal", package: "PreciseDecimal"),
-            .target(name: "RawRepresentableWithUnknown"),
             .product(name: "Tagged", package: "swift-tagged"),
             .target(name: "UnwrapTuple"),
             .product(name: "Version", package: "Version"),
@@ -65,18 +65,16 @@ let package = Package(
 
         .target(name: "EnumTag"),
 
+        .target(name: "Knowable"),
+        .testTarget(name: "KnowableTests", dependencies: [
+            .target(name: "Knowable"),
+            .product(name: "XCTJSONKit", package: "XCTJSONKit"),
+        ]),
+
         .target(name: "NilGuardingOperators"),
         .testTarget(name: "NilGuardingOperatorsTests", dependencies: [
             .target(name: "NilGuardingOperators"),
             .product(name: "CwlPreconditionTesting", package: "CwlPreconditionTesting", condition: .when(platforms: [.macOS, .iOS])),
-        ]),
-
-        .target(name: "RawRepresentableWithUnknown", dependencies: [
-            .product(name: "CasePaths", package: "swift-case-paths"),
-        ]),
-        .testTarget(name: "RawRepresentableWithUnknownTests", dependencies: [
-            .target(name: "RawRepresentableWithUnknown"),
-            .product(name: "XCTJSONKit", package: "XCTJSONKit"),
         ]),
 
         .target(name: "UnwrapTuple", exclude: ["UnwrapTuple.swift.gyb"]),
