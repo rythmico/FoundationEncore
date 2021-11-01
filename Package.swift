@@ -37,30 +37,44 @@ let package = Package(
             .target(name: "UnwrapTuple"),
             .product(name: "Version", package: "Version"),
         ]),
-        .testTarget(name: "FoundationEncoreTests", dependencies: ["FoundationEncore"]),
+        .testTarget(name: "FoundationEncoreTests", dependencies: [
+            .target(name: "FoundationEncore"),
+        ]),
 
         .target(name: "AnyEquatable"),
-        .testTarget(name: "AnyEquatableTests", dependencies: ["AnyEquatable"]),
+        .testTarget(name: "AnyEquatableTests", dependencies: [
+            .target(name: "AnyEquatable"),
+        ]),
 
         .target(name: "Builders"),
-        .testTarget(name: "BuildersTests", dependencies: ["Builders"]),
+        .testTarget(name: "BuildersTests", dependencies: [
+            .target(name: "Builders"),
+        ]),
 
         .target(name: "DateTimeOnly"),
-        .testTarget(name: "DateTimeOnlyTests", dependencies: ["DateTimeOnly", "XCTJSONKit"]),
+        .testTarget(name: "DateTimeOnlyTests", dependencies: [
+            .target(name: "DateTimeOnly"),
+            .product(name: "XCTJSONKit", package: "XCTJSONKit"),
+        ]),
 
         .target(name: "Do", exclude: ["Do.swift.gyb"]),
-        .testTarget(name: "DoTests", dependencies: ["Do"]),
+        .testTarget(name: "DoTests", dependencies: [
+            .target(name: "Do"),
+        ]),
 
         .target(name: "EnumTag"),
 
         .target(name: "NilGuardingOperators"),
         .testTarget(name: "NilGuardingOperatorsTests", dependencies: [
-            "NilGuardingOperators",
+            .target(name: "NilGuardingOperators"),
             .product(name: "CwlPreconditionTesting", package: "CwlPreconditionTesting", condition: .when(platforms: [.macOS, .iOS])),
         ]),
 
         .target(name: "RawRepresentableWithUnknown"),
-        .testTarget(name: "RawRepresentableWithUnknownTests", dependencies: ["RawRepresentableWithUnknown", "XCTJSONKit"]),
+        .testTarget(name: "RawRepresentableWithUnknownTests", dependencies: [
+            .target(name: "RawRepresentableWithUnknown"),
+            .product(name: "XCTJSONKit", package: "XCTJSONKit"),
+        ]),
 
         .target(name: "UnwrapTuple", exclude: ["UnwrapTuple.swift.gyb"]),
     ]
