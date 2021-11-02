@@ -31,7 +31,7 @@ extension DateOnly {
         guard let newDate = calendar.date(
             byAdding: unit,
             value: amount,
-            to: Date(self),
+            to: Date(self, timeZone: timeZone),
             wrappingComponents: false
         ) else {
             throw DateOnlyOperationError.cannotAdd(self, amount: amount, unit: unit)
@@ -47,18 +47,6 @@ extension DateOnly {
 
     public static func + (lhs: Self, rhs: (amount: Int, unit: Calendar.Component)) throws -> Self {
         try lhs.adding(rhs.amount, rhs.unit)
-    }
-}
-
-private extension Date {
-    init(_ dateOnly: DateOnly) {
-        var dateComponents = DateComponents(dateOnly)
-        dateComponents.calendar = calendar
-        dateComponents.timeZone = timeZone
-        guard let date = dateComponents.date else {
-            preconditionFailure("`DateComponents.date` returned nil")
-        }
-        self = date
     }
 }
 
