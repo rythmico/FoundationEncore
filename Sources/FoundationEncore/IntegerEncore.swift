@@ -3,11 +3,6 @@ extension BinaryInteger {
     public init?<T: BinaryInteger>(nilOnOverflow source: T) {
         self.init(exactly: source)
     }
-
-    /// Equivalent to `BinaryInteger.init?(exactly:)`, just with a more obvious name.
-    public init?<T: BinaryFloatingPoint>(nilOnOverflow source: T) {
-        self.init(exactly: source)
-    }
 }
 
 extension FixedWidthInteger {
