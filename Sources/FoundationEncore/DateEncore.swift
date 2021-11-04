@@ -115,8 +115,10 @@ extension DateComponents {
 
 #if DEBUG
 extension Date: ExpressibleByStringLiteral {
+    private static let _iso8601Formatter = ISO8601DateFormatter()
+
     public init(stringLiteral value: StringLiteralType) {
-        self = ISO8601DateFormatter().date(from: value) !! {
+        self = Self._iso8601Formatter.date(from: value) !! {
             preconditionFailure("Could not parse string literal '\(value)' into ISO 8601 date")
         }
     }
