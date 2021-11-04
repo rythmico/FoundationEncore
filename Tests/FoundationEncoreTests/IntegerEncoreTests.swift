@@ -1,7 +1,9 @@
 import FoundationEncore
 import XCTest
 
-final class IntegerEncoreTests: XCTestCase {
+final class IntegerEncoreTests: XCTestCase {}
+
+extension IntegerEncoreTests {
     func testInitNilOnOverflow() {
         XCTAssertEqual(Int(nilOnOverflow: UInt(0)), 0)
         XCTAssertEqual(Int(nilOnOverflow: UInt(1000)), 1000)
