@@ -61,39 +61,4 @@ final class DateEncoreTests: XCTestCase {
         XCTAssertEqual(try "2021-10-31T02:00:00Z" - ("2021-10-31T00:00:00Z", .hour, tz), 2)
         XCTAssertEqual(try "2021-10-31T01:00:00Z" - ("2021-10-31T00:00:00Z", .hour, tz), 1)
     }
-
-    func testMerge() {
-        XCTAssertEqual(
-            Date(
-                date: "2021-10-24T03:00:00Z", // BST
-                time: "2021-10-24T18:07:00Z", // BST
-                timeZone: tz
-            ),
-            "2021-10-24T18:07:00Z"
-        )
-        XCTAssertEqual(
-            Date(
-                date: "2021-10-31T03:00:00Z", // GMT
-                time: "2021-10-24T17:07:00Z", // BST
-                timeZone: tz
-            ),
-            "2021-10-31T18:07:00Z"
-        )
-        XCTAssertEqual(
-            Date(
-                date: "2021-10-24T03:00:00Z", // BST
-                time: "2021-10-31T18:07:00Z", // GMT
-                timeZone: tz
-            ),
-            "2021-10-24T17:07:00Z"
-        )
-        XCTAssertEqual(
-            Date(
-                date: "2021-10-31T03:00:00Z", // GMT
-                time: "2021-10-31T18:07:00Z", // GMT
-                timeZone: tz
-            ),
-            "2021-10-31T18:07:00Z"
-        )
-    }
 }

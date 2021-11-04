@@ -94,16 +94,6 @@ extension Date {
     }
 }
 
-extension Date {
-    public init(date: Date, time: Date, timeZone: TimeZone) {
-        let calendar = Self.calendar(for: timeZone)
-        let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: time)
-        self = (try? date.setting(timeComponents, for: timeZone)) !! {
-            preconditionFailure("Date merging failed with 'date' \(date) 'time' \(time)")
-        }
-    }
-}
-
 extension DateComponents {
     public func optionalValue(for unit: Calendar.Component) -> Int? {
         guard let value = value(for: unit), value != NSNotFound else {

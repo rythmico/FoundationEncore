@@ -164,6 +164,19 @@ extension TimeOnlyTests {
 }
 
 extension TimeOnlyTests {
+    func testExpressibleByStringLiteral() {
+        try XCTAssertEqual("20:10", TimeOnly(hour: 20, minute: 10))
+        try XCTAssertEqual("19:10", TimeOnly(hour: 19, minute: 10))
+        try XCTAssertEqual("18:15", TimeOnly(hour: 18, minute: 15))
+        try XCTAssertEqual("05:50", TimeOnly(hour: 05, minute: 50))
+        try XCTAssertEqual("00:30", TimeOnly(hour: 00, minute: 30))
+        try XCTAssertEqual("00:00", TimeOnly(hour: 00, minute: 00))
+        try XCTAssertEqual("23:12", TimeOnly(hour: 23, minute: 12))
+        try XCTAssertEqual(" 00:12 ", TimeOnly(hour: 00, minute: 12))
+    }
+}
+
+extension TimeOnlyTests {
     func testAdd() throws {
         let sut = try TimeOnly(hour: 05, minute: 07)
 

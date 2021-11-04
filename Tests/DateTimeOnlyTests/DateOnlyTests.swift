@@ -152,6 +152,19 @@ extension DateOnlyTests {
 }
 
 extension DateOnlyTests {
+    func testExpressibleByStringLiteral() {
+        try XCTAssertEqual("10300-07-14", DateOnly(year: 10300, month: 07, day: 14))
+        try XCTAssertEqual("2021-07-14", DateOnly(year: 2021, month: 07, day: 14))
+        try XCTAssertEqual("2019-12-03", DateOnly(year: 2019, month: 12, day: 03))
+        try XCTAssertEqual("0103-12-03", DateOnly(year: 103, month: 12, day: 03))
+        try XCTAssertEqual("0001-12-03", DateOnly(year: 1, month: 12, day: 03))
+        try XCTAssertEqual("0001-12-03", DateOnly(year: 1, month: 12, day: 03))
+        try XCTAssertEqual("0002-12-03", DateOnly(year: 2, month: 12, day: 03))
+        try XCTAssertEqual(" 0121-12-03 ", DateOnly(year: 121, month: 12, day: 03))
+    }
+}
+
+extension DateOnlyTests {
     func testAdd() throws {
         let sut = try DateOnly(year: 2021, month: 10, day: 24)
         // BST to BST (DST) — but not really
