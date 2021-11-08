@@ -6,7 +6,7 @@
 @_exported import CasePaths
 @_exported import CustomDump
 @_exported import DateTimeOnly
-@_exported import Do
+@_exported import Doo
 @_exported import EnumTag
 @_exported import Knowable
 @_exported import LegibleError

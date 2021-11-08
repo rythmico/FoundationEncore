@@ -1,12 +1,12 @@
-precedencegroup DoPrecedence {
+precedencegroup DooPrecedence {
     assignment: true
     associativity: left
     higherThan: AssignmentPrecedence
 }
 
-infix operator => : DoPrecedence
+infix operator => : DooPrecedence
 
-// MARK: - Do (Value Types) -
+// MARK: - Doo (Value Types) -
 % for is_async in [False, True]:
 % availability = "\n".join(["", "@available(macOS 12, iOS 15, watchOS 8, tvOS 15, *)"]) if is_async else ""
 % async = " async " if is_async else " "
@@ -22,7 +22,7 @@ public func => <Subject>(subject: Subject, do: (inout Subject)${async}throws -> 
 }
 % end
 
-// MARK: - Do (Reference Types) -
+// MARK: - Doo (Reference Types) -
 % for is_async in [False, True]:
 % availability = "\n".join(["", "@available(macOS 12, iOS 15, watchOS 8, tvOS 15, *)"]) if is_async else ""
 % async = " async " if is_async else " "

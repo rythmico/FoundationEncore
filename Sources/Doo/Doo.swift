@@ -1,12 +1,12 @@
-precedencegroup DoPrecedence {
+precedencegroup DooPrecedence {
     assignment: true
     associativity: left
     higherThan: AssignmentPrecedence
 }
 
-infix operator => : DoPrecedence
+infix operator => : DooPrecedence
 
-// MARK: - Do (Value Types) -
+// MARK: - Doo (Value Types) -
 
 @_disfavoredOverload
 @discardableResult
@@ -27,7 +27,7 @@ public func => <Subject>(subject: Subject, do: (inout Subject) async throws -> V
     return copy
 }
 
-// MARK: - Do (Reference Types) -
+// MARK: - Doo (Reference Types) -
 
 @discardableResult
 @inlinable

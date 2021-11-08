@@ -1,8 +1,8 @@
 import XCTest
-import Do
+import Doo
 
-class DoTests: XCTestCase {
-    func testDo() {
+class DooTests: XCTestCase {
+    func testDoo() {
         UserDefaults.standard => {
             $0.removeObject(forKey: "username")
             $0.set("foobar", forKey: "username")
@@ -10,7 +10,7 @@ class DoTests: XCTestCase {
         XCTAssertEqual(UserDefaults.standard.string(forKey: "username"), "foobar")
     }
 
-    func testOptionalDo() {
+    func testOptionalDoo() {
         Optional(UserDefaults.standard)? => {
             $0.removeObject(forKey: "username")
             $0.set("foobar", forKey: "username")
@@ -18,7 +18,7 @@ class DoTests: XCTestCase {
         XCTAssertEqual(UserDefaults.standard.string(forKey: "username"), "foobar")
     }
 
-    func testThrowingDo() {
+    func testThrowingDoo() {
         XCTAssertThrowsError(
             try NSObject() => { _ in
                 throw NSError(domain: "", code: 0)
@@ -26,7 +26,7 @@ class DoTests: XCTestCase {
         )
     }
 
-    func testThrowingOptionalDo() {
+    func testThrowingOptionalDoo() {
         XCTAssertThrowsError(
             try Optional(NSObject())? => { _ in
                 throw NSError(domain: "", code: 0)

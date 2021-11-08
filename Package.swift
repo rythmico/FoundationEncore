@@ -14,7 +14,7 @@ let package = Package(
         .library(name: "AnyEquatable", targets: ["AnyEquatable"]),
         .library(name: "Builders", targets: ["Builders"]),
         .library(name: "DateTimeOnly", targets: ["DateTimeOnly"]),
-        .library(name: "Do", targets: ["Do"]),
+        .library(name: "Doo", targets: ["Doo"]),
         .library(name: "EnumTag", targets: ["EnumTag"]),
         .library(name: "NilGuardingOperators", targets: ["NilGuardingOperators"]),
         .library(name: "UnwrapTuple", targets: ["UnwrapTuple"]),
@@ -27,7 +27,7 @@ let package = Package(
             .product(name: "CasePaths", package: "swift-case-paths"),
             .product(name: "CustomDump", package: "swift-custom-dump"),
             .target(name: "DateTimeOnly"),
-            .target(name: "Do"),
+            .target(name: "Doo"),
             .target(name: "EnumTag"),
             .target(name: "Knowable"),
             .product(name: "LegibleError", package: "LegibleError"),
@@ -59,9 +59,9 @@ let package = Package(
             .product(name: "XCTJSONKit", package: "XCTJSONKit"),
         ]),
 
-        .target(name: "Do", exclude: ["Do.swift.gyb"]),
-        .testTarget(name: "DoTests", dependencies: [
-            .target(name: "Do"),
+        .target(name: "Doo", exclude: ["Doo.swift.gyb"]),
+        .testTarget(name: "DooTests", dependencies: [
+            .target(name: "Doo"),
         ]),
 
         .target(name: "EnumTag"),
