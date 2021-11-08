@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "FoundationEncore",
+    name: "rythmico/swift-foundation-encore",
     platforms: [
         .iOS(.v13),
         .macOS(.v10_15),
