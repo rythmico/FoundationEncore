@@ -2,13 +2,13 @@ import Foundation
 
 extension TimeOnly: LosslessStringConvertible {
     public init?(_ description: String) {
-        self.init(rawValue: description)
+        self.init(iso8601: description)
     }
 }
 
 extension TimeOnly: CustomStringConvertible {
     public var description: String {
-        rawValue
+        self.formatted(style: .iso8601)
     }
 }
 

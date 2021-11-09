@@ -2,7 +2,7 @@ import Foundation
 
 extension DateOnlyInterval: CustomStringConvertible {
     public var description: String {
-        start.rawValue + " - " + end.rawValue
+        start.formatted(style: .iso8601) + " - " + end.formatted(style: .iso8601)
     }
 }
 

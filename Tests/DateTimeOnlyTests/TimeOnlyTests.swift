@@ -177,6 +177,32 @@ extension TimeOnlyTests {
 }
 
 extension TimeOnlyTests {
+    func testInitFromISO8601() {
+        XCTAssertEqual(TimeOnly(iso8601: "20:10"), try TimeOnly(hour: 20, minute: 10))
+        XCTAssertEqual(TimeOnly(iso8601: "19:10"), try TimeOnly(hour: 19, minute: 10))
+        XCTAssertEqual(TimeOnly(iso8601: "18:15"), try TimeOnly(hour: 18, minute: 15))
+        XCTAssertEqual(TimeOnly(iso8601: "05:50"), try TimeOnly(hour: 05, minute: 50))
+        XCTAssertEqual(TimeOnly(iso8601: "00:30"), try TimeOnly(hour: 00, minute: 30))
+        XCTAssertEqual(TimeOnly(iso8601: "00:00"), try TimeOnly(hour: 00, minute: 00))
+        XCTAssertEqual(TimeOnly(iso8601: "23:12"), try TimeOnly(hour: 23, minute: 12))
+        XCTAssertEqual(TimeOnly(iso8601: " 00:12 "), try TimeOnly(hour: 00, minute: 12))
+
+        XCTAssertEqual(TimeOnly(iso8601: "25:05"), TimeOnly?.none)
+        XCTAssertEqual(TimeOnly(iso8601: "-12:03"), TimeOnly?.none)
+    }
+
+    func testISO8601Formatting() {
+        XCTAssertEqual(try TimeOnly(hour: 23, minute: 59).formatted(style: .iso8601), "23:59")
+        XCTAssertEqual(try TimeOnly(hour: 20, minute: 10).formatted(style: .iso8601), "20:10")
+        XCTAssertEqual(try TimeOnly(hour: 19, minute: 10).formatted(style: .iso8601), "19:10")
+        XCTAssertEqual(try TimeOnly(hour: 18, minute: 15).formatted(style: .iso8601), "18:15")
+        XCTAssertEqual(try TimeOnly(hour: 05, minute: 50).formatted(style: .iso8601), "05:50")
+        XCTAssertEqual(try TimeOnly(hour: 00, minute: 30).formatted(style: .iso8601), "00:30")
+        XCTAssertEqual(try TimeOnly(hour: 00, minute: 00).formatted(style: .iso8601), "00:00")
+    }
+}
+
+extension TimeOnlyTests {
     func testAdd() throws {
         let sut = try TimeOnly(hour: 05, minute: 07)
 

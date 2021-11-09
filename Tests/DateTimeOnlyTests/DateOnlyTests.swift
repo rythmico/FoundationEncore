@@ -165,6 +165,32 @@ extension DateOnlyTests {
 }
 
 extension DateOnlyTests {
+    func testInitFromISO8601() {
+        XCTAssertEqual(DateOnly(iso8601: "10300-07-14"), try DateOnly(year: 10300, month: 07, day: 14))
+        XCTAssertEqual(DateOnly(iso8601: "2021-07-14"), try DateOnly(year: 2021, month: 07, day: 14))
+        XCTAssertEqual(DateOnly(iso8601: "2019-12-03"), try DateOnly(year: 2019, month: 12, day: 03))
+        XCTAssertEqual(DateOnly(iso8601: "0103-12-03"), try DateOnly(year: 103, month: 12, day: 03))
+        XCTAssertEqual(DateOnly(iso8601: "0001-12-03"), try DateOnly(year: 1, month: 12, day: 03))
+        XCTAssertEqual(DateOnly(iso8601: "0001-12-03"), try DateOnly(year: 1, month: 12, day: 03))
+        XCTAssertEqual(DateOnly(iso8601: "0002-12-03"), try DateOnly(year: 2, month: 12, day: 03))
+        XCTAssertEqual(DateOnly(iso8601: " 0121-12-03 "), try DateOnly(year: 121, month: 12, day: 03))
+
+        XCTAssertEqual(DateOnly(iso8601: "12-03"), DateOnly?.none)
+        XCTAssertEqual(DateOnly(iso8601: "-12-03"), DateOnly?.none)
+        XCTAssertEqual(DateOnly(iso8601: "-0001-12-03"), DateOnly?.none)
+        XCTAssertEqual(DateOnly(iso8601: "-0120-12-03"), DateOnly?.none)
+    }
+
+    func testISO8601Formatting() {
+        XCTAssertEqual(try DateOnly(year: 10300, month: 07, day: 14).formatted(style: .iso8601), "10300-07-14")
+        XCTAssertEqual(try DateOnly(year: 2021, month: 07, day: 14).formatted(style: .iso8601), "2021-07-14")
+        XCTAssertEqual(try DateOnly(year: 2019, month: 12, day: 03).formatted(style: .iso8601), "2019-12-03")
+        XCTAssertEqual(try DateOnly(year: 103, month: 12, day: 03).formatted(style: .iso8601), "0103-12-03")
+        XCTAssertEqual(try DateOnly(year: 1, month: 12, day: 03).formatted(style: .iso8601), "0001-12-03")
+    }
+}
+
+extension DateOnlyTests {
     func testAdd() throws {
         let sut = try DateOnly(year: 2021, month: 10, day: 24)
         // BST to BST (DST) — but not really
