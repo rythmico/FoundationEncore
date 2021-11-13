@@ -74,6 +74,6 @@ extension Sequence {
 public func * <Base1: Sequence, Base2: Collection>(
     lhs: Base1,
     rhs: Base2
-) -> Product2<Base1, Base2> {
+) -> Product2Sequence<Base1, Base2> {
     product(lhs, rhs)
 }

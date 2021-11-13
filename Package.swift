@@ -87,7 +87,7 @@ package.dependencies = [
     .package(name: "LegibleError", url: "https://github.com/mxcl/LegibleError", from: "1.0.6"),
     .package(name: "PeriodDuration", url: "https://github.com/davdroman/PeriodDuration", from: "0.2.0"),
     .package(name: "PreciseDecimal", url: "https://github.com/davdroman/PreciseDecimal", from: "1.0.0"),
-    .package(name: "swift-algorithms", url: "https://github.com/apple/swift-algorithms", from: "0.2.1"),
+    .package(name: "swift-algorithms", url: "https://github.com/apple/swift-algorithms", from: "1.0.0"),
     .package(name: "swift-case-paths", url: "https://github.com/pointfreeco/swift-case-paths", from: "0.7.0"),
     .package(name: "swift-custom-dump", url: "https://github.com/pointfreeco/swift-custom-dump", from: "0.2.1"),
     .package(name: "swift-nonempty", url: "https://github.com/pointfreeco/swift-nonempty", from: "0.3.1"),
