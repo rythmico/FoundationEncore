@@ -1,5 +1,10 @@
 import Foundation
 
+#if DEBUG // check for XCTests running instead, if it ever becomes possible...
+var now: () -> Date = { Date() }
+#else
+let now: () -> Date = { Date() }
+#endif
 let locale = Locale(identifier: "en_US_POSIX")
 let timeZone = TimeZone(secondsFromGMT: .zero)!
 let calendar: Calendar = {
