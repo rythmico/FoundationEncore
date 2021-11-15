@@ -3,7 +3,7 @@ import XCTest
 
 final class FoundationSupportTests: XCTestCase {
     func testDate_initFromDateOnly_timeOnly_timeZone() throws {
-        let tz = TimeZone(identifier: "Europe/London")!
+        let tz = try XCTUnwrap(TimeZone(identifier: "Europe/London"))
         try XCTAssertEqual(
             Date(
                 date: DateOnly(year: 2021, month: 10, day: 24), // BST

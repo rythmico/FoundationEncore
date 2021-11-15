@@ -63,7 +63,7 @@ final class UserDefaultsMock: UserDefaults {
         self.get = get
         self.set = set
         self.remove = remove
-        super.init(suiteName: "dev.davidroman.foundation-encore")!
+        super.init(suiteName: "com.rythmico.foundation-encore")!
     }
 
     override func object(forKey defaultName: String) -> Any? {
