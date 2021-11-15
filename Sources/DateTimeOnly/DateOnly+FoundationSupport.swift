@@ -1,7 +1,7 @@
 import Foundation
 
 extension Date {
-    public init(_ dateOnly: DateOnly, timeZone: TimeZone) {
+    public init(_ dateOnly: DateOnly, in timeZone: TimeZone) {
         var calendar = calendar
         calendar.timeZone = timeZone
         var dateComponents = DateComponents(dateOnly)

@@ -53,7 +53,7 @@ extension DateOnlyTests {
 
     func testInitFromDateAndTimeZone() throws {
         let timeZone = try XCTUnwrap(TimeZone(identifier: "Europe/London"))
-        let sut = DateOnly("2021-10-29T23:00:00Z", timeZone: timeZone)
+        let sut = DateOnly("2021-10-29T23:00:00Z", in: timeZone)
         XCTAssertEqual(sut.year, 2021)
         XCTAssertEqual(sut.month, 10)
         XCTAssertEqual(sut.day, 30)

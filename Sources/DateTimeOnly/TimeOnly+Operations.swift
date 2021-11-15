@@ -31,12 +31,12 @@ extension TimeOnly {
         guard let newDate = calendar.date(
             byAdding: unit,
             value: amount,
-            to: Date(self, timeZone: timeZone),
+            to: Date(self, in: timeZone),
             wrappingComponents: false
         ) else {
             throw TimeOnlyOperationError.cannotAdd(self, amount: amount, unit: unit)
         }
-        self = TimeOnly(newDate, timeZone: timeZone)
+        self = TimeOnly(newDate, in: timeZone)
     }
 
     public func adding(_ amount: Int, _ unit: Calendar.Component) throws -> Self {

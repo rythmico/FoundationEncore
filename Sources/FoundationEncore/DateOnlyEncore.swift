@@ -31,12 +31,12 @@ extension DateOnly {
     public static func + (lhs: Self, rhs: PeriodDuration) throws -> Self {
         guard let newDate = calendar.date(
             byAdding: rhs.asDateComponents,
-            to: Date(lhs, timeZone: timeZone),
+            to: Date(lhs, in: timeZone),
             wrappingComponents: false
         ) else {
             throw DateOnlyEncoreOperationError.cannotAddPeriodDuration(lhs, rhs)
         }
-        return DateOnly(newDate, timeZone: timeZone)
+        return DateOnly(newDate, in: timeZone)
     }
 
     public static func - (lhs: Self, rhs: PeriodDuration) throws -> Self {

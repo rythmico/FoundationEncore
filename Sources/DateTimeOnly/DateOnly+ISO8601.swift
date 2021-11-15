@@ -11,7 +11,7 @@ extension DateOnly {
         guard let date = Self.formatter.date(from: rawValue) else {
             return nil
         }
-        self = DateOnly(date, timeZone: timeZone)
+        self = DateOnly(date, in: timeZone)
     }
 
     public func formatted(style: StandardFormatStyle) -> String {

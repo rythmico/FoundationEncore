@@ -22,7 +22,7 @@ public struct DateOnly: Hashable {
         guard let date = components.date else {
             throw DateOnlyInitError.invalidDateComponents(year: year, month: month, day: day)
         }
-        self.init(date, timeZone: timeZone)
+        self.init(date, in: timeZone)
     }
 }
 
@@ -43,7 +43,7 @@ public enum DateOnlyInitError: LocalizedError {
 }
 
 extension DateOnly {
-    public init(_ date: Date, timeZone: TimeZone) {
+    public init(_ date: Date, in timeZone: TimeZone) {
         let dateComponents = calendar.dateComponents(in: timeZone, from: date)
         guard
             let year = dateComponents.year,

@@ -1,7 +1,7 @@
 import Foundation
 
 extension Date {
-    public init(_ timeOnly: TimeOnly, timeZone: TimeZone) {
+    public init(_ timeOnly: TimeOnly, in timeZone: TimeZone) {
         var calendar = calendar
         calendar.timeZone = timeZone
         var dateComponents = DateComponents(timeOnly)
@@ -30,10 +30,10 @@ extension DateComponents {
 }
 
 extension DateInterval {
-    public init(start: TimeOnly, end: TimeOnly, timeZone: TimeZone) {
+    public init(start: TimeOnly, end: TimeOnly, in timeZone: TimeZone) {
         self.init(
-            start: Date(start, timeZone: timeZone),
-            end: Date(end, timeZone: timeZone)
+            start: Date(start, in: timeZone),
+            end: Date(end, in: timeZone)
         )
     }
 }

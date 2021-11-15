@@ -5,8 +5,8 @@ extension DateOnlyInterval {
         dateOnlyIntervalFormatter.locale = locale
         dateOnlyIntervalFormatter.dateStyle = style
         return dateOnlyIntervalFormatter.string(
-            from: Date(start, timeZone: timeZone),
-            to: Date(end, timeZone: timeZone)
+            from: Date(start, in: timeZone),
+            to: Date(end, in: timeZone)
         )
     }
 }
