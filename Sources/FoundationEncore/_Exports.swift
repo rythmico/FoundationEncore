@@ -13,6 +13,7 @@
 @_exported import NilGuardingOperators
 @_exported import NonEmpty
 @_exported import PeriodDuration
+@_exported import PhoneNumberKit
 @_exported import PreciseDecimal
 @_exported import Tagged
 @_exported import UnwrapTuple
