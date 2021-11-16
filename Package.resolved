@@ -38,6 +38,15 @@
         }
       },
       {
+        "package": "PhoneNumberKit",
+        "repositoryURL": "https://github.com/davdroman/PhoneNumberKit",
+        "state": {
+          "branch": "master",
+          "revision": "6496ab3221076a3430df93f5cf8150ac8e413f17",
+          "version": null
+        }
+      },
+      {
         "package": "PreciseDecimal",
         "repositoryURL": "https://github.com/davdroman/PreciseDecimal",
         "state": {
