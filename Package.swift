@@ -16,6 +16,7 @@ let package = Package(
         .library(name: "DateTimeOnly", targets: ["DateTimeOnly"]),
         .library(name: "Doo", targets: ["Doo"]),
         .library(name: "EnumTag", targets: ["EnumTag"]),
+        .library(name: "Knowable", targets: ["Knowable"]),
         .library(name: "NilGuardingOperators", targets: ["NilGuardingOperators"]),
         .library(name: "UnwrapTuple", targets: ["UnwrapTuple"]),
     ],
