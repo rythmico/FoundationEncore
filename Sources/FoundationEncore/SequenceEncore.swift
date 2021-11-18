@@ -1,4 +1,10 @@
 extension Sequence {
+    public var array: [Element] {
+        Array(self)
+    }
+}
+
+extension Sequence {
     @inlinable
     public func count(
         where predicate: (Element) throws -> Bool

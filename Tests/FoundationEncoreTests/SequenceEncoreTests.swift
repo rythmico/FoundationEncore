@@ -2,6 +2,14 @@ import XCTest
 import FoundationEncore
 
 final class SequenceEncoreTests: XCTestCase {
+    func testArray() {
+        XCTAssertEqual([Int]().array, [])
+        XCTAssertEqual("hello world".array, ["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d"])
+        XCTAssertEqual([1, 2, 3].lazy.array, [1, 2, 3])
+        XCTAssertEqual([1, 2, 3].lazy.map { $0 + 1 }.array, [2, 3, 4])
+        XCTAssertEqual([1, 2, 3].lazy.filter { $0 > 2 }.map { $0 + 1 }.array, [4])
+    }
+
     func testCountWhere() {
         XCTAssertEqual([3, 2, 1, 3].count(where: { $0 == 0 }), 0)
         XCTAssertEqual([3, 2, 1, 3].count(where: { $0 == 1 }), 1)
