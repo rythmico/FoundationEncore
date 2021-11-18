@@ -21,6 +21,12 @@ extension Optional {
     }
 }
 
+extension Optional where Wrapped: RangeReplaceableCollection {
+    public var emptyIfNil: Wrapped {
+        self ?? Wrapped()
+    }
+}
+
 extension Optional where Wrapped: Collection {
     public var isNilOrEmpty: Bool {
         self?.isEmpty != false

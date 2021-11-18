@@ -1,8 +1,17 @@
-import XCTest
 import FoundationEncore
+import XCTest
 
 final class OptionalEncoreTests: XCTestCase {
+    func testEmptyIfNil() {
+        XCTAssertEqual([Int]?(nil).emptyIfNil, [])
+        XCTAssertEqual([Int]?([]).emptyIfNil, [])
+        XCTAssertEqual([Int]?([1]).emptyIfNil, [1])
+        XCTAssertEqual([Int]?([1, 2]).emptyIfNil, [1, 2])
+        XCTAssertEqual([Int]?([1, 2, 3]).emptyIfNil, [1, 2, 3])
+    }
+
     func testIsNilOrEmpty() {
+        XCTAssertEqual([Int]?(nil).isNilOrEmpty, true)
         XCTAssertEqual([Int]?([]).isNilOrEmpty, true)
         XCTAssertEqual([Int]?([1]).isNilOrEmpty, false)
         XCTAssertEqual([Int]?([1, 2]).isNilOrEmpty, false)
