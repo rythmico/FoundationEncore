@@ -88,7 +88,7 @@ package.dependencies = [
     .package(name: "CwlPreconditionTesting", url: "https://github.com/mattgallagher/CwlPreconditionTesting", from: "2.0.2"),
     .package(name: "LegibleError", url: "https://github.com/mxcl/LegibleError", from: "1.0.6"),
     .package(name: "PeriodDuration", url: "https://github.com/davdroman/PeriodDuration", from: "0.2.0"),
-    .package(name: "PhoneNumberKit", url: "https://github.com/davdroman/PhoneNumberKit", .branch("master")),
+    .package(name: "PhoneNumberKit", url: "https://github.com/davdroman/PhoneNumberKit", .branch("davdroman-improvements")),
     .package(name: "PreciseDecimal", url: "https://github.com/davdroman/PreciseDecimal", from: "1.0.0"),
     .package(name: "swift-algorithms", url: "https://github.com/apple/swift-algorithms", from: "1.0.0"),
     .package(name: "swift-case-paths", url: "https://github.com/pointfreeco/swift-case-paths", from: "0.7.0"),
