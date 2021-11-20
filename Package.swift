@@ -78,7 +78,7 @@ let package = Package(
         .target(name: "NilGuardingOperators"),
         .testTarget(name: "NilGuardingOperatorsTests", dependencies: [
             .target(name: "NilGuardingOperators"),
-            .product(name: "CwlPreconditionTesting", package: "CwlPreconditionTesting", condition: .when(platforms: [.macOS, .iOS])),
+            .product(name: "CwlPreconditionTesting", package: "CwlPreconditionTesting", condition: .when(platforms: [.iOS, .macOS])),
         ]),
 
         .target(name: "UnwrapTuple", exclude: ["UnwrapTuple.swift.gyb"]),

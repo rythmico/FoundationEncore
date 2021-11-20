@@ -1,4 +1,4 @@
-#if os(macOS) || os(iOS)
+#if os(iOS) || os(macOS)
 import CwlPreconditionTesting
 import NilGuardingOperators
 import XCTest
