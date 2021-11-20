@@ -88,7 +88,7 @@ package.dependencies = [
     .package(name: "CwlPreconditionTesting", url: "https://github.com/mattgallagher/CwlPreconditionTesting", from: "2.0.2"),
     .package(name: "LegibleError", url: "https://github.com/mxcl/LegibleError", from: "1.0.6"),
     .package(name: "PeriodDuration", url: "https://github.com/davdroman/PeriodDuration", from: "0.2.0"),
-    .package(name: "PhoneNumberKit", url: "https://github.com/davdroman/PhoneNumberKit", .branch("davdroman-improvements")),
+    .package(name: "PhoneNumberKit", url: "https://github.com/davdroman/PhoneNumberKit", branch: "davdroman-improvements"),
     .package(name: "PreciseDecimal", url: "https://github.com/davdroman/PreciseDecimal", from: "1.0.0"),
     .package(name: "swift-algorithms", url: "https://github.com/apple/swift-algorithms", from: "1.0.0"),
     .package(name: "swift-case-paths", url: "https://github.com/pointfreeco/swift-case-paths", from: "0.7.0"),
@@ -96,5 +96,5 @@ package.dependencies = [
     .package(name: "swift-nonempty", url: "https://github.com/pointfreeco/swift-nonempty", from: "0.3.1"),
     .package(name: "swift-tagged", url: "https://github.com/pointfreeco/swift-tagged", from: "0.6.0"),
     .package(name: "Version", url: "https://github.com/mxcl/Version", from: "2.0.1"),
-    .package(name: "XCTJSONKit", url: "https://github.com/davdroman/XCTJSONKit", .branch("main")),
+    .package(name: "XCTJSONKit", url: "https://github.com/davdroman/XCTJSONKit", branch: "main"),
 ]
