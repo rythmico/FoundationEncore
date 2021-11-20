@@ -29,6 +29,15 @@
         }
       },
       {
+        "package": "MobileProvision",
+        "repositoryURL": "https://github.com/CrazyFanFan/MobileProvision",
+        "state": {
+          "branch": "master",
+          "revision": "a08a91c3c4346fa465c520728429d73147bdcf0a",
+          "version": null
+        }
+      },
+      {
         "package": "PeriodDuration",
         "repositoryURL": "https://github.com/davdroman/PeriodDuration",
         "state": {

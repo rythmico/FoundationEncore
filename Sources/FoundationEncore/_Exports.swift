@@ -10,6 +10,9 @@
 @_exported import EnumTag
 @_exported import Knowable
 @_exported import LegibleError
+#if os(iOS) || os(macOS) || os(tvOS)
+@_exported import MobileProvision
+#endif
 @_exported import NilGuardingOperators
 @_exported import NonEmpty
 @_exported import PeriodDuration
