@@ -32,9 +32,9 @@
         "package": "MobileProvision",
         "repositoryURL": "https://github.com/CrazyFanFan/MobileProvision",
         "state": {
-          "branch": "master",
-          "revision": "a08a91c3c4346fa465c520728429d73147bdcf0a",
-          "version": null
+          "branch": null,
+          "revision": "4a1169e50976b17b510467a81ed254642879d4fa",
+          "version": "0.0.2"
         }
       },
       {
