@@ -213,8 +213,6 @@ final class StringEncoreTests: XCTestCase {
         XCTAssertEqual(["David", "Roman", "Aguirre", "Gonzalez"].spacedAndDashed(), "David - Roman - Aguirre - Gonzalez")
     }
 
-    // FIXME: fails with thread sanitizer enabled (Linux on CI)
-    #if !os(Linux)
     func testRandom() {
         let sut = String.random
         XCTAssertEqual(sut(24).count, 24)
@@ -241,5 +239,4 @@ final class StringEncoreTests: XCTestCase {
         XCTAssertEqual(.random(using: &rng), "oUbSellYLdr0WOLX")
         XCTAssertEqual(.random(using: &rng), "5BnEfJ899bHXcGIw")
     }
-    #endif
 }
