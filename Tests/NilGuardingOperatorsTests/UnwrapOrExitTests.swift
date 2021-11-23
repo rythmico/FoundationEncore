@@ -1,6 +1,5 @@
-#if os(iOS) || os(macOS)
-import CwlPreconditionTesting
 import NilGuardingOperators
+import TestableAssert
 import XCTest
 
 final class UnwrapOrExitTests: XCTestCase {
@@ -74,17 +73,7 @@ private extension UnwrapOrExitTests {
         line: UInt = #line,
         _ closure: @escaping () -> DiscardedResult
     ) {
-        let exit = catchBadInstruction { _ = closure() }
-        XCTAssert(exit != nil, "Expected exit never occurred", file: file, line: line)
-    }
-
-    func XCTAssertNoExit<DiscardedResult>(
-        file: StaticString = #file,
-        line: UInt = #line,
-        _ closure: @escaping () -> DiscardedResult
-    ) {
-        let exit = catchBadInstruction { _ = closure() }
-        XCTAssert(exit == nil, "Unexpected exit occurred", file: file, line: line)
+        expectFatalError({ _ = closure() }, file: file, line: line)
     }
 
     func XCTAssertNoExit<ExpectedResult: Equatable>(
@@ -93,10 +82,7 @@ private extension UnwrapOrExitTests {
         line: UInt = #line,
         _ closure: @escaping () -> ExpectedResult
     ) {
-        XCTAssertNoExit(file: file, line: line) {
-            let result = closure()
-            XCTAssertEqual(result, expectedResult)
-        }
+        let result = closure()
+        XCTAssertEqual(result, expectedResult)
     }
 }
-#endif

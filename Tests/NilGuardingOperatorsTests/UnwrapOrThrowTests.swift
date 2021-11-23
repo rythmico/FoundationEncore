@@ -1,5 +1,3 @@
-#if os(iOS) || os(macOS)
-import CwlPreconditionTesting
 import NilGuardingOperators
 import XCTest
 
@@ -95,4 +93,3 @@ private extension UnwrapOrThrowTests {
         XCTAssertEqual(result, expectedResult)
     }
 }
-#endif
