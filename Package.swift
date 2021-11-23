@@ -78,7 +78,7 @@ let package = Package(
         .target(name: "NilGuardingOperators"),
         .testTarget(name: "NilGuardingOperatorsTests", dependencies: [
             .target(name: "NilGuardingOperators"),
-            .product(name: "CwlPreconditionTesting", package: "CwlPreconditionTesting", condition: .when(platforms: [.iOS, .macOS])),
+            .product(name: "TestableAssert", package: "TestableAssert"),
         ]),
 
         .target(name: "UnwrapTuple", exclude: ["UnwrapTuple.swift.gyb"]),
@@ -86,7 +86,6 @@ let package = Package(
 )
 
 package.dependencies = [
-    .package(name: "CwlPreconditionTesting", url: "https://github.com/mattgallagher/CwlPreconditionTesting", from: "2.0.2"),
     .package(name: "LegibleError", url: "https://github.com/mxcl/LegibleError", from: "1.0.6"),
     .package(name: "MobileProvision", url: "https://github.com/CrazyFanFan/MobileProvision", from: "0.0.2"),
     .package(name: "PeriodDuration", url: "https://github.com/davdroman/PeriodDuration", from: "0.2.0"),
@@ -97,6 +96,7 @@ package.dependencies = [
     .package(name: "swift-custom-dump", url: "https://github.com/pointfreeco/swift-custom-dump", from: "0.2.1"),
     .package(name: "swift-nonempty", url: "https://github.com/pointfreeco/swift-nonempty", from: "0.3.1"),
     .package(name: "swift-tagged", url: "https://github.com/pointfreeco/swift-tagged", from: "0.6.0"),
+    .package(name: "TestableAssert", url: "https://github.com/vinceplusplus/TestableAssert", from: "1.0.0"),
     .package(name: "Version", url: "https://github.com/mxcl/Version", from: "2.0.1"),
     .package(name: "XCTJSONKit", url: "https://github.com/davdroman/XCTJSONKit", branch: "main"),
 ]

@@ -2,24 +2,6 @@
   "object": {
     "pins": [
       {
-        "package": "CwlCatchException",
-        "repositoryURL": "https://github.com/mattgallagher/CwlCatchException.git",
-        "state": {
-          "branch": null,
-          "revision": "35f9e770f54ce62dd8526470f14c6e137cef3eea",
-          "version": "2.1.1"
-        }
-      },
-      {
-        "package": "CwlPreconditionTesting",
-        "repositoryURL": "https://github.com/mattgallagher/CwlPreconditionTesting",
-        "state": {
-          "branch": null,
-          "revision": "fb7a26374e8570ff5c68142e5c83406d6abae0d8",
-          "version": "2.0.2"
-        }
-      },
-      {
         "package": "LegibleError",
         "repositoryURL": "https://github.com/mxcl/LegibleError",
         "state": {
@@ -116,6 +98,24 @@
           "branch": null,
           "revision": "6c36cf66f58553d0481a2628e3e27177f698a897",
           "version": "0.6.0"
+        }
+      },
+      {
+        "package": "TestableAssert",
+        "repositoryURL": "https://github.com/vinceplusplus/TestableAssert",
+        "state": {
+          "branch": null,
+          "revision": "5648a41c8b6c3c8a5ef5637968f896df63b6bf09",
+          "version": "1.0.2"
+        }
+      },
+      {
+        "package": "TestableAssertSupport",
+        "repositoryURL": "https://github.com/vinceplusplus/TestableAssertSupport",
+        "state": {
+          "branch": null,
+          "revision": "89ee981347f3c75511011a1657b2043e6ac0eb62",
+          "version": "1.0.1"
         }
       },
       {

@@ -36,4 +36,18 @@ jobs:
       image: swift:5.5
     steps:
     - uses: actions/checkout@v2
-    - run: swift test --parallel --sanitize=thread -Xswiftc -warnings-as-errors
+    - name: Run tests (thread sanitizer ON)
+      run: |
+        swift test \
+          --skip NilGuardingOperatorsTests.UnwrapOrExitTests/test \
+          --skip FoundationEncoreTests.StringEncoreTests/testRandom \
+          --parallel \
+          --sanitize=thread \
+          -Xswiftc -warnings-as-errors
+    - name: Run tests (thread sanitizer OFF)
+      run: |
+        swift test \
+          --filter NilGuardingOperatorsTests.UnwrapOrExitTests/test \
+          --filter FoundationEncoreTests.StringEncoreTests/testRandom \
+          --parallel \
+          -Xswiftc -warnings-as-errors
