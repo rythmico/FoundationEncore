@@ -4,6 +4,7 @@
 @_exported import AnyEquatable
 @_exported import Builders
 @_exported import CasePaths
+@_exported import CollectionConcurrencyKit
 @_exported import CustomDump
 @_exported import DateTimeOnly
 @_exported import Doo
