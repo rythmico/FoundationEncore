@@ -7,12 +7,12 @@ let now: () -> Date = { Date() }
 #endif
 let locale = Locale(identifier: "en_US_POSIX")
 let timeZone = TimeZone(secondsFromGMT: .zero)!
-let calendar: Calendar = {
+var calendar: Calendar {
     var calendar = Calendar(identifier: .gregorian)
     calendar.locale = locale
     calendar.timeZone = timeZone
     return calendar
-}()
+}
 let dateOnlyFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.timeZone = timeZone
