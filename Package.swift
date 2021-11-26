@@ -26,6 +26,7 @@ let package = Package(
             .target(name: "AnyEquatable"),
             .target(name: "Builders"),
             .product(name: "CasePaths", package: "swift-case-paths"),
+            .product(name: "CollectionConcurrencyKit", package: "CollectionConcurrencyKit"),
             .product(name: "CustomDump", package: "swift-custom-dump"),
             .target(name: "DateTimeOnly"),
             .target(name: "Doo"),
@@ -86,6 +87,7 @@ let package = Package(
 )
 
 package.dependencies = [
+    .package(name: "CollectionConcurrencyKit", url: "https://github.com/davdroman/CollectionConcurrencyKit", branch: "main"),
     .package(name: "LegibleError", url: "https://github.com/mxcl/LegibleError", from: "1.0.6"),
     .package(name: "MobileProvision", url: "https://github.com/CrazyFanFan/MobileProvision", from: "0.0.2"),
     .package(name: "PeriodDuration", url: "https://github.com/davdroman/PeriodDuration", from: "0.2.0"),

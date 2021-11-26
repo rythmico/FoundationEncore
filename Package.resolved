@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "CollectionConcurrencyKit",
+        "repositoryURL": "https://github.com/davdroman/CollectionConcurrencyKit",
+        "state": {
+          "branch": "main",
+          "revision": "45c4ac8362c2028549fdb3ef5529107909383d4f",
+          "version": null
+        }
+      },
+      {
         "package": "LegibleError",
         "repositoryURL": "https://github.com/mxcl/LegibleError",
         "state": {
