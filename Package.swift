@@ -95,7 +95,7 @@ package.dependencies = [
     .package(name: "PreciseDecimal", url: "https://github.com/davdroman/PreciseDecimal", from: "1.0.0"),
     .package(name: "swift-algorithms", url: "https://github.com/apple/swift-algorithms", from: "1.0.0"),
     .package(name: "swift-case-paths", url: "https://github.com/pointfreeco/swift-case-paths", from: "0.7.0"),
-    .package(name: "swift-custom-dump", url: "https://github.com/davdroman/swift-custom-dump", branch: "main"),
+    .package(name: "swift-custom-dump", url: "https://github.com/pointfreeco/swift-custom-dump", from: "0.2.1"),
     .package(name: "swift-nonempty", url: "https://github.com/pointfreeco/swift-nonempty", from: "0.3.1"),
     .package(name: "swift-tagged", url: "https://github.com/pointfreeco/swift-tagged", from: "0.6.0"),
     .package(name: "TestableAssert", url: "https://github.com/vinceplusplus/TestableAssert", from: "1.0.0"),
