@@ -50,9 +50,9 @@
         "package": "PreciseDecimal",
         "repositoryURL": "https://github.com/davdroman/PreciseDecimal",
         "state": {
-          "branch": null,
-          "revision": "a15081386a21414f445a0d14ffcfebd8df3c6da3",
-          "version": "1.0.0"
+          "branch": "main",
+          "revision": "2ab57fc9a2262204c2bde46d133d2b9dd72e74a0",
+          "version": null
         }
       },
       {
@@ -150,7 +150,7 @@
         "repositoryURL": "https://github.com/davdroman/XCTJSONKit",
         "state": {
           "branch": "main",
-          "revision": "0186d200c7f289055465bbc322505d66b4762787",
+          "revision": "406920fd6c284944d4030d8df61f5c9f38c2e87a",
           "version": null
         }
       }

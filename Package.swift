@@ -92,7 +92,7 @@ package.dependencies = [
     .package(name: "MobileProvision", url: "https://github.com/CrazyFanFan/MobileProvision", from: "0.0.2"),
     .package(name: "PeriodDuration", url: "https://github.com/davdroman/PeriodDuration", from: "0.2.0"),
     .package(name: "PhoneNumberKit", url: "https://github.com/davdroman/PhoneNumberKit", branch: "davdroman-improvements"),
-    .package(name: "PreciseDecimal", url: "https://github.com/davdroman/PreciseDecimal", from: "1.0.0"),
+    .package(name: "PreciseDecimal", url: "https://github.com/davdroman/PreciseDecimal", branch: "main"),
     .package(name: "swift-algorithms", url: "https://github.com/apple/swift-algorithms", from: "1.0.0"),
     .package(name: "swift-case-paths", url: "https://github.com/pointfreeco/swift-case-paths", from: "0.7.0"),
     .package(name: "swift-custom-dump", url: "https://github.com/pointfreeco/swift-custom-dump", from: "0.2.1"),
