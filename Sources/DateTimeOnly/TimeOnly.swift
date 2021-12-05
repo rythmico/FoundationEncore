@@ -12,7 +12,7 @@ public struct TimeOnly: Hashable {
             throw TimeOnlyInitError.invalidDateComponents(hour: hour, minute: minute)
         }
         let components = DateComponents(
-            calendar: calendar,
+            calendar: calendar(),
             timeZone: timeZone,
             hour: hour,
             minute: minute
@@ -41,7 +41,7 @@ public enum TimeOnlyInitError: LocalizedError {
 
 extension TimeOnly {
     public init(_ date: Date, in timeZone: TimeZone) {
-        let dateComponents = calendar.dateComponents(in: timeZone, from: date)
+        let dateComponents = calendar().dateComponents(in: timeZone, from: date)
         guard
             let hour = dateComponents.hour,
             let minute = dateComponents.minute

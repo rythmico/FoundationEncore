@@ -16,7 +16,7 @@ extension TimeOnly {
 
     public func formatted(style: StandardFormatStyle) -> String {
         var dateComponents = DateComponents(self)
-        dateComponents.calendar = calendar
+        dateComponents.calendar = calendar()
         dateComponents.timeZone = timeZone
         guard let date = dateComponents.date else {
             preconditionFailure("`DateComponents.date` returned nil")

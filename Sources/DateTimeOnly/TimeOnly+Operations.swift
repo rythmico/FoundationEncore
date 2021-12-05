@@ -28,7 +28,7 @@ public enum TimeOnlyOperationError: LocalizedError {
 
 extension TimeOnly {
     public mutating func add(_ amount: Int, _ unit: Calendar.Component) throws {
-        guard let newDate = calendar.date(
+        guard let newDate = calendar().date(
             byAdding: unit,
             value: amount,
             to: Date(self, in: timeZone),
@@ -71,7 +71,7 @@ extension TimeOnly {
 extension TimeOnly {
     public static func diff(from minuend: Self, to subtrahend: Self, _ unit: Calendar.Component) throws -> Int {
         guard
-            let diffResult = calendar.dateComponents(
+            let diffResult = calendar().dateComponents(
                 [unit],
                 from: DateComponents(subtrahend),
                 to: DateComponents(minuend)
