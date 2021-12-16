@@ -1,12 +1,7 @@
 import FoundationEncore
 import XCTest
 
-final class ErrorEncoreTests: XCTestCase {
-    func testStringAsError() {
-        let sut: Error = "Lorem ipsum"
-        XCTAssertEqual(sut.localizedDescription, "Lorem ipsum")
-    }
-
+final class NSErrorEncoreTests: XCTestCase {
     func testInitWithDomainCodeLocalizedDescription() {
         let sut = NSError(domain: "ErrorEncoreDomain", code: -1, localizedDescription: "Lorem ipsum")
         XCTAssertEqual(sut.domain, "ErrorEncoreDomain")
