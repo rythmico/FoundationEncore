@@ -28,27 +28,13 @@ jobs:
     - uses: actions/checkout@v2
     - uses: mxcl/xcodebuild@v1
       with:
-        xcode: ~13.2
         swift: ~5.5
+        scheme: FoundationEncore
         platform: ${{ matrix.platform }}
   linux:
     runs-on: ubuntu-latest
-    container:
-      image: swift:5.5
+    container: swift:5.5
     steps:
     - uses: actions/checkout@v2
-    - name: Run tests (thread sanitizer ON)
-      run: |
-        swift test \
-          --skip NilGuardingOperatorsTests.UnwrapOrExitTests/test \
-          --skip FoundationEncoreTests.StringEncoreTests/testRandom \
-          --parallel \
-          --sanitize=thread \
-          -Xswiftc -warnings-as-errors
-    - name: Run tests (thread sanitizer OFF)
-      run: |
-        swift test \
-          --filter NilGuardingOperatorsTests.UnwrapOrExitTests/test \
-          --filter FoundationEncoreTests.StringEncoreTests/testRandom \
-          --parallel \
-          -Xswiftc -warnings-as-errors
+    - name: Run tests
+      run: swift test --parallel --sanitize=thread -Xswiftc -warnings-as-errors
