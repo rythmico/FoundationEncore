@@ -3,11 +3,11 @@
     "pins": [
       {
         "package": "CollectionConcurrencyKit",
-        "repositoryURL": "https://github.com/davdroman/CollectionConcurrencyKit",
+        "repositoryURL": "https://github.com/JohnSundell/CollectionConcurrencyKit",
         "state": {
-          "branch": "main",
-          "revision": "45c4ac8362c2028549fdb3ef5529107909383d4f",
-          "version": null
+          "branch": null,
+          "revision": "b4f23e24b5a1bff301efc5e70871083ca029ff95",
+          "version": "0.2.0"
         }
       },
       {
@@ -87,7 +87,7 @@
         "repositoryURL": "https://github.com/rythmico/swift-encore",
         "state": {
           "branch": "main",
-          "revision": "153008e3b697da5cb04e61da26d87a93b2dca242",
+          "revision": "1b7484b07ffbd4e9cedebec56e451defd0892999",
           "version": null
         }
       },
