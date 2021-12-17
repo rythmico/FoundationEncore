@@ -83,6 +83,15 @@
         }
       },
       {
+        "package": "SwiftEncore",
+        "repositoryURL": "https://github.com/rythmico/swift-encore",
+        "state": {
+          "branch": "main",
+          "revision": "153008e3b697da5cb04e61da26d87a93b2dca242",
+          "version": null
+        }
+      },
+      {
         "package": "swift-nonempty",
         "repositoryURL": "https://github.com/pointfreeco/swift-nonempty",
         "state": {
@@ -107,24 +116,6 @@
           "branch": null,
           "revision": "6c36cf66f58553d0481a2628e3e27177f698a897",
           "version": "0.6.0"
-        }
-      },
-      {
-        "package": "TestableAssert",
-        "repositoryURL": "https://github.com/vinceplusplus/TestableAssert",
-        "state": {
-          "branch": null,
-          "revision": "5648a41c8b6c3c8a5ef5637968f896df63b6bf09",
-          "version": "1.0.2"
-        }
-      },
-      {
-        "package": "TestableAssertSupport",
-        "repositoryURL": "https://github.com/vinceplusplus/TestableAssertSupport",
-        "state": {
-          "branch": null,
-          "revision": "89ee981347f3c75511011a1657b2043e6ac0eb62",
-          "version": "1.0.1"
         }
       },
       {
