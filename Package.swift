@@ -15,6 +15,7 @@ let package = Package(
     targets: [
         .target(name: "FoundationEncore", dependencies: [
             .target(name: "DateTimeOnly"),
+            .product(name: "IdentifiedCollections", package: "swift-identified-collections"),
             .target(name: "Knowable"),
             .product(name: "LegibleError", package: "LegibleError"),
             .product(name: "MobileProvision", package: "MobileProvision", condition: .when(platforms: [.iOS, .macOS, .tvOS])),
@@ -49,6 +50,7 @@ package.dependencies = [
     .package(name: "PhoneNumberKit", url: "https://github.com/davdroman/PhoneNumberKit", branch: "davdroman-improvements"),
     .package(name: "PreciseDecimal", url: "https://github.com/davdroman/PreciseDecimal", branch: "main"),
     .package(name: "SwiftEncore", url: "https://github.com/rythmico/swift-encore", branch: "main"),
+    .package(name: "swift-identified-collections", url: "https://github.com/pointfreeco/swift-identified-collections", from: "0.3.2"),
     .package(name: "Version", url: "https://github.com/mxcl/Version", from: "2.0.1"),
     .package(name: "XCTJSONKit", url: "https://github.com/davdroman/XCTJSONKit", branch: "main"),
 ]

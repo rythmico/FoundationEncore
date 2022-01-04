@@ -2,6 +2,7 @@
 @_exported import Foundation
 
 @_exported import DateTimeOnly
+@_exported import IdentifiedCollections
 @_exported import Knowable
 @_exported import LegibleError
 #if os(iOS) || os(macOS) || os(tvOS)
