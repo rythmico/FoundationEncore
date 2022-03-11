@@ -49,7 +49,7 @@ package.dependencies = [
     .package(url: "https://github.com/davdroman/PeriodDuration", from: "0.2.0"),
     .package(url: "https://github.com/davdroman/PhoneNumberKit", branch: "davdroman-improvements"),
     .package(url: "https://github.com/davdroman/PreciseDecimal", branch: "main"),
-    .package(url: "https://github.com/rythmico/swift-encore", branch: "main"),
+    .package(url: "https://github.com/rythmico/swift-encore", branch: "swift-5.6"),
     .package(url: "https://github.com/pointfreeco/swift-identified-collections", from: "0.3.2"),
     .package(url: "https://github.com/mxcl/Version", from: "2.0.1"),
     .package(url: "https://github.com/davdroman/XCTJSONKit", branch: "main"),
