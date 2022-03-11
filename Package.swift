@@ -1,4 +1,4 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.6
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -22,7 +22,7 @@ let package = Package(
             .product(name: "PeriodDuration", package: "PeriodDuration"),
             .product(name: "PhoneNumberKit", package: "PhoneNumberKit"),
             .product(name: "PreciseDecimal", package: "PreciseDecimal"),
-            .product(name: "SwiftEncore", package: "SwiftEncore"),
+            .product(name: "SwiftEncore", package: "swift-encore"),
             .product(name: "Version", package: "Version"),
         ]),
         .testTarget(name: "FoundationEncoreTests", dependencies: [
@@ -44,13 +44,13 @@ let package = Package(
 )
 
 package.dependencies = [
-    .package(name: "LegibleError", url: "https://github.com/mxcl/LegibleError", from: "1.0.6"),
-    .package(name: "MobileProvision", url: "https://github.com/CrazyFanFan/MobileProvision", from: "0.0.2"),
-    .package(name: "PeriodDuration", url: "https://github.com/davdroman/PeriodDuration", from: "0.2.0"),
-    .package(name: "PhoneNumberKit", url: "https://github.com/davdroman/PhoneNumberKit", branch: "davdroman-improvements"),
-    .package(name: "PreciseDecimal", url: "https://github.com/davdroman/PreciseDecimal", branch: "main"),
-    .package(name: "SwiftEncore", url: "https://github.com/rythmico/swift-encore", branch: "main"),
-    .package(name: "swift-identified-collections", url: "https://github.com/pointfreeco/swift-identified-collections", from: "0.3.2"),
-    .package(name: "Version", url: "https://github.com/mxcl/Version", from: "2.0.1"),
-    .package(name: "XCTJSONKit", url: "https://github.com/davdroman/XCTJSONKit", branch: "main"),
+    .package(url: "https://github.com/mxcl/LegibleError", from: "1.0.6"),
+    .package(url: "https://github.com/CrazyFanFan/MobileProvision", from: "0.0.2"),
+    .package(url: "https://github.com/davdroman/PeriodDuration", from: "0.2.0"),
+    .package(url: "https://github.com/davdroman/PhoneNumberKit", branch: "davdroman-improvements"),
+    .package(url: "https://github.com/davdroman/PreciseDecimal", branch: "main"),
+    .package(url: "https://github.com/rythmico/swift-encore", branch: "main"),
+    .package(url: "https://github.com/pointfreeco/swift-identified-collections", from: "0.3.2"),
+    .package(url: "https://github.com/mxcl/Version", from: "2.0.1"),
+    .package(url: "https://github.com/davdroman/XCTJSONKit", branch: "main"),
 ]
