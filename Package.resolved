@@ -41,8 +41,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/davdroman/PhoneNumberKit",
       "state" : {
-        "branch" : "davdroman-improvements",
-        "revision" : "d9f14aa3f61a4f9bf3d6ce1f01e2d57dd71bb948"
+        "branch" : "master",
+        "revision" : "ed68a8971fd4a55af375eb5ed353d7bc8b583c6b"
       }
     },
     {
