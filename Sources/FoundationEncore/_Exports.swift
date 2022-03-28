@@ -9,6 +9,6 @@
 @_exported import MobileProvision
 #endif
 @_exported import PeriodDuration
-@_exported import PhoneNumberKit
+@_exported import struct PhoneNumberKit.PhoneNumber
 @_exported import PreciseDecimal
 @_exported import Version
