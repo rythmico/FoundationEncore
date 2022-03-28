@@ -1,5 +1,5 @@
 import FoundationEncore
-@testable import PhoneNumberKit
+@testable import struct PhoneNumberKit.PhoneNumber // imports internal PhoneNumber.init
 import XCTest
 
 final class PhoneNumberEncoreTests: XCTestCase {
