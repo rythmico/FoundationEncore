@@ -47,7 +47,7 @@ package.dependencies = [
     .package(url: "https://github.com/mxcl/LegibleError", from: "1.0.6"),
     .package(url: "https://github.com/CrazyFanFan/MobileProvision", from: "0.0.2"),
     .package(url: "https://github.com/davdroman/PeriodDuration", from: "0.2.0"),
-    .package(url: "https://github.com/davdroman/PhoneNumberKit", branch: "master"),
+    .package(url: "https://github.com/marmelroy/PhoneNumberKit", branch: "master"),
     .package(url: "https://github.com/davdroman/PreciseDecimal", branch: "main"),
     .package(url: "https://github.com/rythmico/swift-encore", branch: "main"),
     .package(url: "https://github.com/pointfreeco/swift-identified-collections", from: "0.3.2"),

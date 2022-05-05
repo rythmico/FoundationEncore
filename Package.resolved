@@ -39,10 +39,10 @@
     {
       "identity" : "phonenumberkit",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/davdroman/PhoneNumberKit",
+      "location" : "https://github.com/marmelroy/PhoneNumberKit",
       "state" : {
         "branch" : "master",
-        "revision" : "e81874f7e25458f66dc38ca00517eafed330f482"
+        "revision" : "216765f6fe3aa6f05f319c51d2bda57e6137777b"
       }
     },
     {
