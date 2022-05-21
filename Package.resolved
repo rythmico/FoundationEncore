@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/davdroman/PeriodDuration",
       "state" : {
-        "revision" : "b5448c22e35a7550a62a806bed08ee2940b17ed4",
-        "version" : "0.12.0"
+        "revision" : "abbd8233f9c0732e133b0e89a8897cfd5feca144",
+        "version" : "0.13.0"
       }
     },
     {
@@ -96,7 +96,7 @@
       "location" : "https://github.com/rythmico/swift-encore",
       "state" : {
         "branch" : "main",
-        "revision" : "f704ec2185b009a466b6ccb159c971b3de9d5530"
+        "revision" : "0805c77ecf32f4faa3dcc3c2d7cf86611d30e362"
       }
     },
     {
@@ -104,8 +104,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-identified-collections",
       "state" : {
-        "revision" : "680bf440178a78a627b1c2c64c0855f6523ad5b9",
-        "version" : "0.3.2"
+        "revision" : "2d6b7ffcc67afd9077fac5e5a29bcd6d39b71076",
+        "version" : "0.4.0"
       }
     },
     {
